@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/CartContext";
-import { Trash2, PayPal } from "lucide-react";
+import { Trash2, CreditCard } from "lucide-react";
 import { toast } from "sonner";
 
 const Cart = () => {
@@ -193,7 +193,7 @@ const Cart = () => {
                   "Processing..."
                 ) : (
                   <>
-                    <PayPal className="h-5 w-5" />
+                    <CreditCard className="h-5 w-5" />
                     Checkout with PayPal
                   </>
                 )}
