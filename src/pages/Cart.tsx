@@ -4,13 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/CartContext";
-import { Trash2, CreditCard } from "lucide-react";
+import { Trash2, CreditCard, PaypalIcon } from "lucide-react";
 import { toast } from "sonner";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 const Cart = () => {
   const { items, removeItem, updateQuantity, clearCart, cartTotal } = useCart();
   const navigate = useNavigate();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState("card");
 
   const handleQuantityChange = (productId: string, size: string, quantity: number) => {
     if (quantity < 1) {
@@ -27,9 +30,9 @@ const Cart = () => {
     
     setIsCheckingOut(true);
     
-    // Simulate a checkout process
+    // Simulate a checkout process based on selected payment method
     setTimeout(() => {
-      toast.success("Payment successful! Thank you for your order.");
+      toast.success(`Payment successful with ${paymentMethod.toUpperCase()}! Thank you for your order.`);
       clearCart();
       navigate("/");
     }, 2000);
@@ -184,6 +187,42 @@ const Cart = () => {
                 </div>
               </div>
               
+              {/* Payment Method Selection */}
+              <div className="mt-4 mb-6">
+                <h3 className="font-medium mb-3">Select Payment Method</h3>
+                <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod} className="gap-3">
+                  <div className="flex items-center space-x-2 border rounded-md p-3 hover:bg-gray-50 cursor-pointer">
+                    <RadioGroupItem value="card" id="card" />
+                    <Label htmlFor="card" className="flex items-center cursor-pointer">
+                      <CreditCard className="h-5 w-5 mr-2" />
+                      <span>Credit/Debit Card</span>
+                    </Label>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2 border rounded-md p-3 hover:bg-gray-50 cursor-pointer">
+                    <RadioGroupItem value="paypal" id="paypal" />
+                    <Label htmlFor="paypal" className="flex items-center cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                        <path d="M17.998 10h-10a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z" />
+                        <path d="M7 10V7a5 5 0 0 1 9.9-1" />
+                      </svg>
+                      <span>PayPal</span>
+                    </Label>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2 border rounded-md p-3 hover:bg-gray-50 cursor-pointer">
+                    <RadioGroupItem value="applepay" id="applepay" />
+                    <Label htmlFor="applepay" className="flex items-center cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
+                        <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z" />
+                        <path d="M10 2c1 .5 2 2 2 5" />
+                      </svg>
+                      <span>Apple Pay</span>
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </div>
+              
               <Button 
                 className="w-full bg-brand-orange hover:bg-orange-600 gap-2 mt-4"
                 onClick={handleCheckout}
@@ -193,8 +232,20 @@ const Cart = () => {
                   "Processing..."
                 ) : (
                   <>
-                    <CreditCard className="h-5 w-5" />
-                    Checkout with PayPal
+                    {paymentMethod === "card" && <CreditCard className="h-5 w-5" />}
+                    {paymentMethod === "paypal" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M17.998 10h-10a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z" />
+                        <path d="M7 10V7a5 5 0 0 1 9.9-1" />
+                      </svg>
+                    )}
+                    {paymentMethod === "applepay" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z" />
+                        <path d="M10 2c1 .5 2 2 2 5" />
+                      </svg>
+                    )}
+                    Checkout with {paymentMethod === "card" ? "Card" : paymentMethod === "paypal" ? "PayPal" : "Apple Pay"}
                   </>
                 )}
               </Button>

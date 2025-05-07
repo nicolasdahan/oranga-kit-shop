@@ -1,4 +1,3 @@
-
 export type Product = {
   id: string;
   name: string;
@@ -204,4 +203,11 @@ export const searchProducts = (query: string): Product[] => {
     product.description.toLowerCase().includes(lowercaseQuery) || 
     product.team.toLowerCase().includes(lowercaseQuery)
   );
+};
+
+// Function to get new arrivals (most recent products)
+export const getNewArrivals = () => {
+  // In a real app, this would filter by date added or a "new" flag
+  // For this demo, we'll just return a subset of products
+  return products.slice(0, 4);
 };

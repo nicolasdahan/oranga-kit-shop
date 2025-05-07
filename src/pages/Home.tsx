@@ -1,11 +1,13 @@
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { getFeaturedProducts } from "@/data/products";
+import { getFeaturedProducts, getNewArrivals } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import { Badge } from "@/components/ui/badge";
 
 const Home = () => {
   const featuredProducts = getFeaturedProducts();
+  const newArrivals = getNewArrivals();
 
   return (
     <div>
@@ -30,6 +32,31 @@ const Home = () => {
                 <Link to="/catalog?category=national-teams">National Teams</Link>
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* New Arrivals Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-3xl font-bold">New Arrivals</h2>
+            <Badge className="bg-brand-orange hover:bg-orange-600">New</Badge>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {newArrivals.map((product) => (
+              <div key={product.id} className="relative">
+                <div className="absolute top-3 right-3 z-10">
+                  <Badge className="bg-brand-orange hover:bg-orange-600">New</Badge>
+                </div>
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button asChild className="bg-brand-orange hover:bg-orange-600 text-white">
+              <Link to="/catalog?filter=new">View All New Arrivals</Link>
+            </Button>
           </div>
         </div>
       </section>
