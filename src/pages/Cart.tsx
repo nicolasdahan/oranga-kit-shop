@@ -1,13 +1,13 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/CartContext";
-import { Trash2, CreditCard, PaypalIcon } from "lucide-react";
+import { Trash2, CreditCard } from "lucide-react";
 import { toast } from "sonner";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
 
 const Cart = () => {
   const { items, removeItem, updateQuantity, clearCart, cartTotal } = useCart();
