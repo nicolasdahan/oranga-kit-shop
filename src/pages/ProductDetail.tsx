@@ -6,7 +6,10 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useCart } from "@/context/CartContext";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Tag, Shirt } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,6 +18,10 @@ const ProductDetail = () => {
   const product = id ? getProductById(id) : undefined;
   
   const [selectedSize, setSelectedSize] = useState<string>(product?.size[0] || "");
+  const [addPatches, setAddPatches] = useState<boolean>(false);
+  const [addNameset, setAddNameset] = useState<boolean>(false);
+  const [playerName, setPlayerName] = useState<string>("");
+  const [playerNumber, setPlayerNumber] = useState<string>("");
 
   if (!product) {
     return (
@@ -30,9 +37,18 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
     if (selectedSize) {
-      addItem(product, selectedSize);
+      const customizations = {
+        patches: addPatches,
+        nameset: addNameset ? { name: playerName, number: playerNumber } : null
+      };
+      addItem(product, selectedSize, customizations);
     }
   };
+
+  // Calculate additional costs
+  const patchesCost = addPatches ? 10 : 0;
+  const namesetCost = addNameset ? 20 : 0;
+  const totalPrice = product.price + patchesCost + namesetCost;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -55,7 +71,7 @@ const ProductDetail = () => {
           
           <div className="mb-6">
             <p className="text-3xl font-bold text-brand-orange">
-              ${product.price.toFixed(2)}
+              ${totalPrice.toFixed(2)}
             </p>
           </div>
           
@@ -67,7 +83,7 @@ const ProductDetail = () => {
               <p>{product.season}</p>
             </div>
 
-            <div>
+            <div className="mb-6">
               <h3 className="font-medium mb-3">Select Size:</h3>
               <RadioGroup 
                 value={selectedSize}
@@ -90,6 +106,92 @@ const ProductDetail = () => {
                   </div>
                 ))}
               </RadioGroup>
+            </div>
+            
+            {/* Customization Options */}
+            <div className="space-y-6">
+              <h3 className="font-medium mb-2">Customization Options:</h3>
+              
+              {/* League Patches Option */}
+              <div className="flex items-start space-x-2">
+                <Checkbox 
+                  id="patches" 
+                  checked={addPatches}
+                  onCheckedChange={(checked) => setAddPatches(checked === true)}
+                  className="mt-1"
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <div className="flex items-center gap-2">
+                    <Label htmlFor="patches" className="text-sm font-medium leading-none">
+                      Add League Patches
+                    </Label>
+                    <Badge variant="new" className="text-xs">+€10.00</Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Official league patches for both sleeves
+                  </p>
+                </div>
+              </div>
+              
+              {/* Name & Number Option */}
+              <div className="flex items-start space-x-2">
+                <Checkbox 
+                  id="nameset" 
+                  checked={addNameset}
+                  onCheckedChange={(checked) => setAddNameset(checked === true)}
+                  className="mt-1"
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <div className="flex items-center gap-2">
+                    <Label htmlFor="nameset" className="text-sm font-medium leading-none">
+                      Add Player Name & Number
+                    </Label>
+                    <Badge variant="new" className="text-xs">+€20.00</Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Official name and number printing on the back
+                  </p>
+                </div>
+              </div>
+              
+              {/* Name & Number Input Fields (conditional) */}
+              {addNameset && (
+                <div className="pl-6 mt-2 space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="playerName">Player Name</Label>
+                    <div className="flex items-center">
+                      <Shirt className="w-5 h-5 mr-2 text-gray-500" />
+                      <Input 
+                        id="playerName"
+                        value={playerName}
+                        onChange={(e) => setPlayerName(e.target.value)}
+                        placeholder="Enter player name"
+                        className="max-w-xs"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="playerNumber">Number</Label>
+                    <div className="flex items-center">
+                      <Tag className="w-5 h-5 mr-2 text-gray-500" />
+                      <Input 
+                        id="playerNumber"
+                        value={playerNumber}
+                        onChange={(e) => {
+                          // Allow only numbers with max 2 digits
+                          const value = e.target.value.replace(/[^0-9]/g, '');
+                          if (value.length <= 2) {
+                            setPlayerNumber(value);
+                          }
+                        }}
+                        placeholder="1-99"
+                        className="max-w-[100px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           

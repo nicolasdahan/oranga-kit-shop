@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 import { Product } from "@/data/products";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Tag } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -17,6 +19,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
             alt={product.name}
             className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
           />
+          <div className="absolute top-2 right-2">
+            <Badge variant="new" className="flex items-center gap-1">
+              <Tag className="h-3.5 w-3.5" />
+              <span>Customizable</span>
+            </Badge>
+          </div>
         </div>
         <div className="p-4">
           <h3 className="text-lg font-medium text-gray-900">{product.name}</h3>

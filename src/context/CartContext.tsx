@@ -1,18 +1,30 @@
+
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { Product } from '../data/products';
 import { toast } from 'sonner';
+
+type NameSet = {
+  name: string;
+  number: string;
+} | null;
+
+type Customizations = {
+  patches: boolean;
+  nameset: NameSet;
+};
 
 export type CartItem = {
   product: Product;
   quantity: number;
   size: string;
+  customizations?: Customizations;
 };
 
 type CartContextType = {
   items: CartItem[];
-  addItem: (product: Product, size: string) => void;
-  removeItem: (productId: string, size: string) => void;
-  updateQuantity: (productId: string, size: string, quantity: number) => void;
+  addItem: (product: Product, size: string, customizations?: Customizations) => void;
+  removeItem: (productId: string, size: string, customizations?: Customizations) => void;
+  updateQuantity: (productId: string, size: string, quantity: number, customizations?: Customizations) => void;
   clearCart: () => void;
   cartTotal: number;
   cartCount: number;
@@ -23,11 +35,13 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  const addItem = (product: Product, size: string) => {
+  const addItem = (product: Product, size: string, customizations?: Customizations) => {
     setItems(currentItems => {
-      // Check if item already exists in cart
+      // Check if item already exists in cart with same customizations
       const existingItemIndex = currentItems.findIndex(
-        item => item.product.id === product.id && item.size === size
+        item => item.product.id === product.id && 
+               item.size === size && 
+               JSON.stringify(item.customizations) === JSON.stringify(customizations)
       );
 
       if (existingItemIndex > -1) {
@@ -39,22 +53,30 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       } else {
         // Otherwise add new item
         toast.success("Item added to cart");
-        return [...currentItems, { product, quantity: 1, size }];
+        return [...currentItems, { product, quantity: 1, size, customizations }];
       }
     });
   };
 
-  const removeItem = (productId: string, size: string) => {
+  const removeItem = (productId: string, size: string, customizations?: Customizations) => {
     setItems(currentItems => 
-      currentItems.filter(item => !(item.product.id === productId && item.size === size))
+      currentItems.filter(item => !(
+        item.product.id === productId && 
+        item.size === size && 
+        JSON.stringify(item.customizations) === JSON.stringify(customizations)
+      ))
     );
     toast.info("Item removed from cart");
   };
 
-  const updateQuantity = (productId: string, size: string, quantity: number) => {
+  const updateQuantity = (productId: string, size: string, quantity: number, customizations?: Customizations) => {
     setItems(currentItems => {
       return currentItems.map(item => {
-        if (item.product.id === productId && item.size === size) {
+        if (
+          item.product.id === productId && 
+          item.size === size && 
+          JSON.stringify(item.customizations) === JSON.stringify(customizations)
+        ) {
           return { ...item, quantity };
         }
         return item;
@@ -68,7 +90,21 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const cartTotal = items.reduce(
-    (total, item) => total + item.product.price * item.quantity,
+    (total, item) => {
+      let itemPrice = item.product.price * item.quantity;
+      
+      // Add customization costs
+      if (item.customizations) {
+        if (item.customizations.patches) {
+          itemPrice += 10 * item.quantity; // €10 per patch set
+        }
+        if (item.customizations.nameset) {
+          itemPrice += 20 * item.quantity; // €20 per nameset
+        }
+      }
+      
+      return total + itemPrice;
+    }, 
     0
   );
 
