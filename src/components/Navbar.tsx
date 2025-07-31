@@ -4,11 +4,14 @@ import { Search, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/CartContext";
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageSelector from "./LanguageSelector";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { cartCount } = useCart();
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
@@ -27,59 +30,59 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-sm font-medium hover:text-brand-orange transition-colors">
-            Home
+          <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
+            {t('nav.home')}
           </Link>
-          <Link to="/catalog" className="text-sm font-medium hover:text-brand-orange transition-colors">
-            All Products
+          <Link to="/catalog" className="text-sm font-medium hover:text-primary transition-colors">
+            {t('nav.allProducts')}
           </Link>
           <div className="relative group">
-            <button className="text-sm font-medium hover:text-brand-orange transition-colors">
-              Categories
+            <button className="text-sm font-medium hover:text-primary transition-colors">
+              {t('nav.categories')}
             </button>
-            <div className="absolute left-0 top-full mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div className="absolute left-0 top-full mt-2 w-48 rounded-md shadow-lg bg-card ring-1 ring-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
               <div className="py-1" role="menu" aria-orientation="vertical">
                 <Link
                   to="/catalog?category=national-teams"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm text-card-foreground hover:bg-accent"
                   role="menuitem"
                 >
-                  National Teams
+                  {t('category.nationalTeams')}
                 </Link>
                 <Link
                   to="/catalog?category=premier-league"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm text-card-foreground hover:bg-accent"
                   role="menuitem"
                 >
-                  Premier League
+                  {t('category.premierLeague')}
                 </Link>
                 <Link
                   to="/catalog?category=la-liga"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm text-card-foreground hover:bg-accent"
                   role="menuitem"
                 >
-                  La Liga
+                  {t('category.laLiga')}
                 </Link>
                 <Link
                   to="/catalog?category=serie-a"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm text-card-foreground hover:bg-accent"
                   role="menuitem"
                 >
-                  Serie A
+                  {t('category.serieA')}
                 </Link>
                 <Link
                   to="/catalog?category=bundesliga"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm text-card-foreground hover:bg-accent"
                   role="menuitem"
                 >
-                  Bundesliga
+                  {t('category.bundesliga')}
                 </Link>
                 <Link
                   to="/catalog?category=ligue-1"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block px-4 py-2 text-sm text-card-foreground hover:bg-accent"
                   role="menuitem"
                 >
-                  Ligue 1
+                  {t('category.ligue1')}
                 </Link>
               </div>
             </div>
@@ -90,8 +93,8 @@ const Navbar = () => {
           <form onSubmit={handleSearch} className="hidden md:flex items-center">
             <Input
               type="search"
-              placeholder="Search jerseys..."
-              className="w-[200px] focus-visible:ring-brand-orange"
+              placeholder={t('nav.searchPlaceholder')}
+              className="w-[200px] focus-visible:ring-primary"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -100,10 +103,12 @@ const Navbar = () => {
             </Button>
           </form>
 
+          <LanguageSelector />
+
           <Link to="/cart" className="relative">
             <ShoppingCart className="h-6 w-6" />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-brand-orange text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 {cartCount}
               </span>
             )}

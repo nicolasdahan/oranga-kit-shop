@@ -7,8 +7,10 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { products, categories, searchProducts, getProductsByCategory } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Catalog = () => {
+  const { t } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -61,10 +63,10 @@ const Catalog = () => {
       <div className="flex flex-col md:flex-row gap-8">
         {/* Sidebar for desktop / Collapsible filter on mobile */}
         <div className={`md:w-1/4 lg:w-1/5 ${isFilterOpen ? 'block' : 'hidden md:block'}`}>
-          <div className="sticky top-24 bg-white p-4 rounded-lg border">
+          <div className="sticky top-24 bg-card p-4 rounded-lg border">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold flex items-center">
-                <Filter className="w-5 h-5 mr-2" /> Filters
+                <Filter className="w-5 h-5 mr-2" /> {t('catalog.filters')}
               </h3>
               <Button 
                 variant="outline" 
@@ -72,12 +74,12 @@ const Catalog = () => {
                 onClick={clearFilters}
                 className="text-xs"
               >
-                Clear All
+                {t('catalog.clearAll')}
               </Button>
             </div>
 
             <div className="border-t pt-4">
-              <h4 className="font-medium mb-2">Categories</h4>
+              <h4 className="font-medium mb-2">{t('catalog.categories')}</h4>
               <div className="space-y-2">
                 {categories.map((category) => (
                   <div key={category.id} className="flex items-center">
@@ -103,7 +105,7 @@ const Catalog = () => {
                 className="w-full"
                 variant="outline"
               >
-                Apply Filters
+                {t('catalog.applyFilters')}
               </Button>
             </div>
           </div>
@@ -115,13 +117,13 @@ const Catalog = () => {
             <div>
               <h1 className="text-2xl font-bold">
                 {selectedCategory
-                  ? categories.find(c => c.id === selectedCategory)?.name || 'Products'
+                  ? categories.find(c => c.id === selectedCategory)?.name || t('catalog.allProducts')
                   : searchQuery
-                  ? `Search results for "${searchQuery}"`
-                  : 'All Products'}
+                  ? `${t('catalog.searchResults')} "${searchQuery}"`
+                  : t('catalog.allProducts')}
               </h1>
-              <p className="text-gray-500 mt-1">
-                {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'} found
+              <p className="text-muted-foreground mt-1">
+                {filteredProducts.length} {filteredProducts.length === 1 ? t('catalog.productFound') : t('catalog.productsFound')}
               </p>
             </div>
 
@@ -132,18 +134,18 @@ const Catalog = () => {
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
               >
                 <Filter className="w-4 h-4 mr-2" /> 
-                {isFilterOpen ? "Hide Filters" : "Show Filters"}
+                {isFilterOpen ? t('catalog.hideFilters') : t('catalog.showFilters')}
               </Button>
               
               <form onSubmit={handleSearch} className="flex flex-grow">
                 <Input
-                  placeholder="Search products..."
+                  placeholder={t('catalog.searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="rounded-r-none focus-visible:ring-brand-orange"
+                  className="rounded-r-none focus-visible:ring-primary"
                 />
-                <Button type="submit" className="rounded-l-none bg-brand-orange hover:bg-orange-600">
-                  Search
+                <Button type="submit" className="rounded-l-none bg-primary hover:bg-primary/90">
+                  {t('catalog.search')}
                 </Button>
               </form>
             </div>
@@ -157,10 +159,10 @@ const Catalog = () => {
             </div>
           ) : (
             <div className="text-center py-12 border rounded-lg">
-              <h3 className="text-xl font-medium mb-2">No products found</h3>
-              <p className="text-gray-500 mb-6">Try adjusting your search or filter to find what you're looking for.</p>
-              <Button onClick={clearFilters} className="bg-brand-orange hover:bg-orange-600">
-                Clear Filters
+              <h3 className="text-xl font-medium mb-2">{t('catalog.noProducts')}</h3>
+              <p className="text-muted-foreground mb-6">{t('catalog.noProductsDesc')}</p>
+              <Button onClick={clearFilters} className="bg-primary hover:bg-primary/90">
+                {t('catalog.clearFilters')}
               </Button>
             </div>
           )}
