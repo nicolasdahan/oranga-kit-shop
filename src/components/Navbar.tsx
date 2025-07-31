@@ -23,7 +23,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur">
       <div className="container flex items-center justify-between h-16 mx-auto px-4">
         <Link to="/" className="flex items-center">
-          <h1 className="text-2xl font-bold text-brand-orange">FootballShirts<span className="text-brand-black">.com</span></h1>
+          <h1 className="text-2xl font-bold text-primary">dadafoot<span className="text-muted-foreground">.com</span></h1>
         </Link>
 
         <div className="hidden md:flex items-center space-x-6">

@@ -65,7 +65,7 @@ export default {
 				},
 				brand: {
           orange: '#F97316',
-          black: '#1F1F1F',
+          white: '#FFFFFF',
         }
 			},
 			borderRadius: {
