@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tag } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCurrency } from "@/context/CurrencyContext";
 
 interface ProductCardProps {
   product: Product;
@@ -12,6 +13,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { t } = useLanguage();
+  const { formatPrice } = useCurrency();
   
   return (
     <div className="group rounded-lg border overflow-hidden hover:shadow-lg transition-shadow">
@@ -33,7 +35,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <h3 className="text-lg font-medium text-card-foreground">{product.name}</h3>
           <p className="mt-1 text-sm text-muted-foreground">{product.team}</p>
           <div className="mt-2 flex items-center justify-between">
-            <p className="text-lg font-semibold text-primary">${product.price.toFixed(2)}</p>
+            <p className="text-lg font-semibold text-primary">{formatPrice(product.price)}</p>
             <Button variant="outline" size="sm" className="btn-outline">
               {t('product.viewDetails')}
             </Button>

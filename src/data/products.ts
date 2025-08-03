@@ -1,3 +1,11 @@
+import { getProducts as getStoredProducts } from '@/lib/productStorage';
+
+export type Brand = 'Nike' | 'Adidas' | 'Puma' | 'New Balance' | 'Kappa' | 'Macron';
+export type Competition = 'League' | 'Champions League' | 'Europa League' | 'World Cup' | 'Euro' | 'Copa America';
+export type KitType = 'Home' | 'Away' | 'Third' | 'Goalkeeper' | 'Special Edition';
+export type Condition = 'New' | 'Used - Like New' | 'Used - Good' | 'Used - Fair';
+export type JerseyFormat = 'Stadium' | 'Player Issue' | 'Pro Stock' | 'Match Worn' | 'Match Prepared';
+
 export type Product = {
   id: string;
   name: string;
@@ -10,6 +18,13 @@ export type Product = {
   season: string;
   inStock: boolean;
   featured: boolean;
+  brand: Brand;
+  competition: Competition[];
+  kitType: KitType;
+  condition: Condition;
+  hasNameset: boolean;
+  format: JerseyFormat;
+  dateAdded: string; // ISO date string
 };
 
 export type Category = {
@@ -23,6 +38,11 @@ export const categories: Category[] = [
     id: "national-teams",
     name: "National Teams",
     description: "Official shirts from national teams around the world"
+  },
+  {
+    id: "clubs",
+    name: "Clubs",
+    description: "All club shirts (Premier League, La Liga, Serie A, Bundesliga, Ligue 1, etc.)"
   },
   {
     id: "premier-league",
@@ -51,7 +71,8 @@ export const categories: Category[] = [
   }
 ];
 
-export const products: Product[] = [
+// Produits par défaut (avec dateAdded pour le tri)
+const defaultProducts: Product[] = [
   {
     id: "eng-home-2023",
     name: "England Home Jersey 2023",
@@ -63,7 +84,14 @@ export const products: Product[] = [
     size: ["S", "M", "L", "XL", "XXL"],
     season: "2023/24",
     inStock: true,
-    featured: true
+    featured: true,
+    brand: "Nike",
+    competition: ["Euro"],
+    kitType: "Home",
+    condition: "New",
+    hasNameset: false,
+    format: "Stadium",
+    dateAdded: "2023-01-01T00:00:00.000Z"
   },
   {
     id: "fra-home-2023",
@@ -76,7 +104,14 @@ export const products: Product[] = [
     size: ["S", "M", "L", "XL", "XXL"],
     season: "2023/24",
     inStock: true,
-    featured: true
+    featured: true,
+    brand: "Nike",
+    competition: ["Euro"],
+    kitType: "Home",
+    condition: "New",
+    hasNameset: false,
+    format: "Stadium",
+    dateAdded: "2023-01-01T00:00:00.000Z"
   },
   {
     id: "bra-home-2023",
@@ -184,21 +219,40 @@ export const products: Product[] = [
   },
 ];
 
+// Fonction pour obtenir tous les produits (défaut + personnalisés)
+export const getAllProducts = (): Product[] => {
+  try {
+    const storedProducts = getStoredProducts();
+    const allProducts = [...defaultProducts, ...storedProducts];
+    return allProducts;
+  } catch (error) {
+    console.error('Error loading stored products:', error);
+    return defaultProducts;
+  }
+};
+
 export const getProductById = (id: string): Product | undefined => {
-  return products.find(product => product.id === id);
+  return getAllProducts().find(product => product.id === id);
 };
 
 export const getProductsByCategory = (categoryId: string): Product[] => {
-  return products.filter(product => product.category === categoryId);
+  const allProducts = getAllProducts();
+  
+  // Cas spécial pour "clubs" : tous les produits sauf les équipes nationales
+  if (categoryId === "clubs") {
+    return allProducts.filter(product => product.category !== "national-teams");
+  }
+  
+  return allProducts.filter(product => product.category === categoryId);
 };
 
 export const getFeaturedProducts = (): Product[] => {
-  return products.filter(product => product.featured);
+  return getAllProducts().filter(product => product.featured);
 };
 
 export const searchProducts = (query: string): Product[] => {
   const lowercaseQuery = query.toLowerCase();
-  return products.filter(product => 
+  return getAllProducts().filter(product => 
     product.name.toLowerCase().includes(lowercaseQuery) || 
     product.description.toLowerCase().includes(lowercaseQuery) || 
     product.team.toLowerCase().includes(lowercaseQuery)
@@ -207,7 +261,9 @@ export const searchProducts = (query: string): Product[] => {
 
 // Function to get new arrivals (most recent products)
 export const getNewArrivals = () => {
-  // In a real app, this would filter by date added or a "new" flag
-  // For this demo, we'll just return a subset of products
-  return products.slice(0, 4);
+  // Get all products and sort by date added (newest first)
+  const allProducts = getAllProducts();
+  return allProducts
+    .sort((a, b) => new Date(b.dateAdded || '2023-01-01').getTime() - new Date(a.dateAdded || '2023-01-01').getTime())
+    .slice(0, 8);
 };

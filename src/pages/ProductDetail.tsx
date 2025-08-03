@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useCart } from "@/context/CartContext";
-import { ShoppingCart, Tag, Shirt } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { ShoppingCart, Tag, Shirt, PaypalIcon } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -15,6 +16,7 @@ const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { addItem } = useCart();
+  const { t } = useLanguage();
   const product = id ? getProductById(id) : undefined;
   
   const [selectedSize, setSelectedSize] = useState<string>(product?.size[0] || "");
@@ -26,10 +28,10 @@ const ProductDetail = () => {
   if (!product) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="text-3xl font-bold mb-4">Product Not Found</h1>
-        <p className="mb-8">Sorry, the product you're looking for doesn't exist.</p>
+        <h1 className="text-3xl font-bold mb-4">{t('product.notFound')}</h1>
+        <p className="mb-8">{t('product.notFoundDesc')}</p>
         <Button onClick={() => navigate("/catalog")} className="bg-brand-orange hover:bg-orange-600">
-          Back to Catalog
+          {t('product.backToCatalog')}
         </Button>
       </div>
     );
@@ -42,6 +44,22 @@ const ProductDetail = () => {
         nameset: addNameset ? { name: playerName, number: playerNumber } : null
       };
       addItem(product, selectedSize, customizations);
+    }
+  };
+
+  const handlePaypalCheckout = () => {
+    if (selectedSize) {
+      // Ici, vous intégrerez le code de paiement PayPal
+      // Pour l'exemple, nous allons juste afficher un message
+      console.log('PayPal checkout with:', {
+        product,
+        size: selectedSize,
+        customizations: {
+          patches: addPatches,
+          nameset: addNameset ? { name: playerName, number: playerNumber } : null
+        },
+        totalPrice
+      });
     }
   };
 
@@ -79,12 +97,12 @@ const ProductDetail = () => {
             <p className="text-gray-700 mb-6">{product.description}</p>
             
             <div className="mb-6">
-              <h3 className="font-medium mb-2">Season:</h3>
+              <h3 className="font-medium mb-2">{t('product.season')}:</h3>
               <p>{product.season}</p>
             </div>
 
             <div className="mb-6">
-              <h3 className="font-medium mb-3">Select Size:</h3>
+              <h3 className="font-medium mb-3">{t('product.selectSize')}:</h3>
               <RadioGroup 
                 value={selectedSize}
                 onValueChange={setSelectedSize}
@@ -110,7 +128,7 @@ const ProductDetail = () => {
             
             {/* Customization Options */}
             <div className="space-y-6">
-              <h3 className="font-medium mb-2">Customization Options:</h3>
+              <h3 className="font-medium mb-2">{t('product.customizationOptions')}:</h3>
               
               {/* League Patches Option */}
               <div className="flex items-start space-x-2">
@@ -123,12 +141,12 @@ const ProductDetail = () => {
                 <div className="grid gap-1.5 leading-none">
                   <div className="flex items-center gap-2">
                     <Label htmlFor="patches" className="text-sm font-medium leading-none">
-                      Add League Patches
+                      {t('product.addLeaguePatches')}
                     </Label>
                     <Badge variant="new" className="text-xs">+€10.00</Badge>
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    Official league patches for both sleeves
+                    {t('product.patchesDesc')}
                   </p>
                 </div>
               </div>
@@ -144,12 +162,12 @@ const ProductDetail = () => {
                 <div className="grid gap-1.5 leading-none">
                   <div className="flex items-center gap-2">
                     <Label htmlFor="nameset" className="text-sm font-medium leading-none">
-                      Add Player Name & Number
+                      {t('product.addNameNumber')}
                     </Label>
                     <Badge variant="new" className="text-xs">+€20.00</Badge>
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    Official name and number printing on the back
+                    {t('product.nameNumberDesc')}
                   </p>
                 </div>
               </div>
@@ -158,21 +176,21 @@ const ProductDetail = () => {
               {addNameset && (
                 <div className="pl-6 mt-2 space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="playerName">Player Name</Label>
+                    <Label htmlFor="playerName">{t('product.playerName')}</Label>
                     <div className="flex items-center">
                       <Shirt className="w-5 h-5 mr-2 text-gray-500" />
                       <Input 
                         id="playerName"
                         value={playerName}
                         onChange={(e) => setPlayerName(e.target.value)}
-                        placeholder="Enter player name"
+                        placeholder={t('product.enterPlayerName')}
                         className="max-w-xs"
                       />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="playerNumber">Number</Label>
+                    <Label htmlFor="playerNumber">{t('product.number')}</Label>
                     <div className="flex items-center">
                       <Tag className="w-5 h-5 mr-2 text-gray-500" />
                       <Input 
@@ -195,22 +213,35 @@ const ProductDetail = () => {
             </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                onClick={handleAddToCart}
+                className="bg-brand-orange hover:bg-orange-600 text-white flex-1"
+                size="lg"
+                disabled={!selectedSize}
+              >
+                <ShoppingCart className="mr-2 h-5 w-5" /> {t('product.addToCart')}
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="flex-1"
+                onClick={() => navigate("/cart")}
+              >
+                {t('product.viewCart')}
+              </Button>
+            </div>
             <Button
-              onClick={handleAddToCart}
-              className="bg-brand-orange hover:bg-orange-600 text-white flex-1"
+              onClick={handlePaypalCheckout}
+              className="w-full bg-[#0070BA] hover:bg-[#003087] text-white"
               size="lg"
               disabled={!selectedSize}
             >
-              <ShoppingCart className="mr-2 h-5 w-5" /> Add to Cart
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="flex-1"
-              onClick={() => navigate("/cart")}
-            >
-              View Cart
+              <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.067 8.478c.492.315.844.825.844 1.522 0 1.845-1.534 3.526-3.33 3.526h-2.262c-.182 0-.343.122-.395.297l-1.457 6.037c-.052.175-.213.297-.395.297H9.611c-.182 0-.343-.122-.395-.297L7.76 13.823c-.052-.175-.213-.297-.395-.297H5.103c-.182 0-.343-.122-.395-.297L3.25 7.192c-.052-.175.057-.297.239-.297h3.895c.182 0 .343.122.395.297l1.457 6.037c.052.175.213.297.395.297h2.262c1.796 0 3.33-1.681 3.33-3.526 0-.697-.352-1.207-.844-1.522-.492-.315-.844-.825-.844-1.522 0-1.845 1.534-3.526 3.33-3.526h2.262c.182 0 .343.122.395.297l1.457 6.037c.052.175.213.297.395.297h2.262c.182 0 .343.122.395.297l1.457 6.037c.052.175-.057.297-.239.297h-3.895c-.182 0-.343-.122-.395-.297l-1.457-6.037c-.052-.175-.213-.297-.395-.297h-2.262c-1.796 0-3.33-1.681-3.33-3.526 0-.697.352-1.207.844-1.522z"/>
+              </svg>
+              {t('product.paypalCheckout')}
             </Button>
           </div>
           
@@ -219,19 +250,19 @@ const ProductDetail = () => {
               <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
               </svg>
-              Free shipping on orders over $100
+              {t('product.freeShipping')}
             </div>
             <div className="flex items-center text-sm">
               <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
               </svg>
-              Authentic official licensed product
+              {t('product.authentic')}
             </div>
             <div className="flex items-center text-sm">
               <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
               </svg>
-              Secure payment with PayPal
+              {t('product.securePayment')}
             </div>
           </div>
         </div>

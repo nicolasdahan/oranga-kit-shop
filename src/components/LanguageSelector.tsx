@@ -22,9 +22,13 @@ const LanguageSelector = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="flex items-center gap-2">
+        <Button 
+          variant="ghost" 
+          size="sm" 
+          className="flex items-center gap-2 hover:bg-transparent text-white hover:text-white/80 transition-colors duration-300 hover-lift"
+        >
           <Globe className="h-4 w-4" />
-          <span className="hidden sm:inline">{currentLanguage?.flag}</span>
+          <span className="hidden sm:inline font-medium">{currentLanguage?.flag}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
@@ -32,7 +36,11 @@ const LanguageSelector = () => {
           <DropdownMenuItem
             key={lang.code}
             onClick={() => setLanguage(lang.code)}
-            className={`flex items-center gap-2 ${language === lang.code ? 'bg-accent' : ''}`}
+            className={`flex items-center gap-2 ${
+              language === lang.code 
+                ? 'bg-primary/10 text-primary' 
+                : 'hover:text-primary hover:bg-primary/5'
+            } transition-colors duration-300`}
           >
             <span>{lang.flag}</span>
             <span>{lang.name}</span>
