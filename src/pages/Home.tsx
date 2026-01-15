@@ -136,6 +136,21 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Customize Your Shirt Section */}
+      <section className="py-16 bg-card">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">Customize Your Shirt</h2>
+            <p className="text-lg text-muted-foreground mb-4">
+              Already have a favorite football shirt? Send it to us and we'll print your chosen name set and patches on it!
+            </p>
+            <p className="text-muted-foreground">
+              Simply ship your shirt to our workshop, tell us what customization you'd like (player name, number, league patches), and we'll professionally apply them before sending your shirt back to you. Perfect for personalizing jerseys you already own.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Products */}
       <section className="py-16">
         <div className="container mx-auto px-4">
