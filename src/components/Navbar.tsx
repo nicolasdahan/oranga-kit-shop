@@ -53,9 +53,6 @@ const Navbar = () => {
             </span>
             {t('nav.promotion')}
           </Link>
-          <Link to="/nameset-patches" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
-            {t('nav.namesetPatches')}
-          </Link>
         </div>
 
         <div className="flex items-center space-x-6">
