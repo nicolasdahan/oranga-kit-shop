@@ -82,11 +82,8 @@ const Home = () => {
               {t('home.hero.subtitle')}
             </p> */}
             <div className="flex flex-wrap gap-4">
-              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6">
                 <Link to="/catalog">{t('home.hero.shopNow')}</Link>
-              </Button>
-              <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-foreground">
-                <Link to="/catalog?category=national-teams">{t('home.hero.nationalTeams')}</Link>
               </Button>
             </div>
           </div>
