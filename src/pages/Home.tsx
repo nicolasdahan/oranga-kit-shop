@@ -33,10 +33,10 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section with Carousel */}
-      <section className="relative h-[100px] flex items-center">
+      <section className="relative h-[600px] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-black to-brand-black/70 z-10"></div>
         <div 
-          className="absolute inset-0 bg-cover bg-center transition-all duration-500"
+          className="absolute inset-0 bg-cover bg-center transition-all duration-500 scale-75"
           style={{ backgroundImage: `url('${heroImages[currentImageIndex]}')` }}
         ></div>
         
