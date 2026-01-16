@@ -192,16 +192,23 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Customize Your Shirt Section */}
+      {/* Football Passion Section */}
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Customize Your Shirt</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Wear Your Passion. Live Your Game.
+            </h2>
+            <p className="text-xl font-semibold text-primary mb-6">
+              "More Than Just a Shirt - It's Your Identity"
+            </p>
             <p className="text-lg text-muted-foreground mb-4">
-              Already have a favorite football shirt? Send it to us and we'll print your chosen name set and patches on it!
+              A football shirt isn't just fabric and colors. It's the roar of the stadium, the joy of victory, the pride of your club. 
+              Whether you're at the match, on the street, or with friends, wearing your team's colors connects you to millions of fans worldwide.
             </p>
             <p className="text-muted-foreground">
-              Simply ship your shirt to our workshop, tell us what customization you'd like (player name, number, league patches), and we'll professionally apply them before sending your shirt back to you. Perfect for personalizing jerseys you already own.
+              From vintage classics that tell legendary stories to modern masterpieces worn by today's heroes, each shirt carries the spirit of the beautiful game. 
+              Express your loyalty, celebrate your heritage, and show the world which side you're on. Because football is more than a sport – it's a way of life.
             </p>
           </div>
         </div>
