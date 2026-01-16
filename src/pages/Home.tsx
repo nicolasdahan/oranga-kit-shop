@@ -74,10 +74,10 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-2xl text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ WebkitTextStroke: '2px blue' }}>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'gold', WebkitTextStroke: '2px darkblue' }}>
               {t('home.hero.title')}
             </h1>
-            <p className="text-xl mb-8" style={{ WebkitTextStroke: '1px blue' }}>
+            <p className="text-xl mb-8" style={{ color: 'gold', WebkitTextStroke: '1px darkblue' }}>
               {t('home.hero.subtitle')}
             </p>
             <div className="flex flex-wrap gap-4">
