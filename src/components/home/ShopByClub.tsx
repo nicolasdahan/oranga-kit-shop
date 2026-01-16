@@ -21,37 +21,33 @@ const ShopByClub = () => {
         {/* Featured Clubs Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-8">
           {featuredClubs.map(club => (
-            <Link key={club.id} to={`/clubs/${club.slug}`}>
-              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:scale-105">
-                <CardContent className="p-4">
-                  <div 
-                    className="w-full aspect-square rounded-lg mb-3 flex items-center justify-center shadow-md"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${club.colors[0]} 0%, ${club.colors[1] || club.colors[0]} 100%)` 
-                    }}
-                  >
-                    {club.logo ? (
-                      <img 
-                        src={club.logo} 
-                        alt={`${club.name} logo`} 
-                        className="w-2/3 h-2/3 object-contain drop-shadow-lg"
-                      />
-                    ) : (
-                      <span className="text-3xl font-bold text-white drop-shadow-lg">
-                        {club.name.substring(0, 2).toUpperCase()}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="font-bold text-sm text-center group-hover:text-primary transition-colors line-clamp-2">
-                    {club.name}
-                  </h3>
-                  {club.nicknames && club.nicknames[0] && (
-                    <p className="text-xs text-muted-foreground text-center mt-1 line-clamp-1">
-                      {club.nicknames[0]}
-                    </p>
-                  )}
-                </CardContent>
-              </Card>
+            <Link 
+              key={club.id} 
+              to={`/clubs/${club.slug}`}
+              className="block aspect-square relative rounded-lg overflow-hidden group"
+            >
+              <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors z-10"></div>
+              {club.logo ? (
+                <div className="absolute inset-0 flex items-center justify-center p-8 bg-white">
+                  <img 
+                    src={club.logo} 
+                    alt={club.name} 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              ) : (
+                <div 
+                  className="absolute inset-0"
+                  style={{ 
+                    background: `linear-gradient(135deg, ${club.colors[0]} 0%, ${club.colors[1] || club.colors[0]} 100%)` 
+                  }}
+                />
+              )}
+              <div className="absolute inset-0 flex items-center justify-center z-20">
+                <span className="text-white font-bold text-lg text-center px-2">
+                  {club.name}
+                </span>
+              </div>
             </Link>
           ))}
         </div>
