@@ -1,22 +1,77 @@
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { getFeaturedProducts, getNewArrivals } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/context/LanguageContext";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Home = () => {
   const { t } = useLanguage();
   const featuredProducts = getFeaturedProducts();
   const newArrivals = getNewArrivals();
 
+  // Hero images array
+  const heroImages = [
+    "/hero-banner.jpg",
+    "/Puma-National-Team-Banner-3300x1500.jpg",
+    "/total-90-wallpaper.png",
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  };
+
   return (
     <div>
-      {/* Hero Section */}
+      {/* Hero Section with Carousel */}
       <section className="relative h-[500px] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-black to-brand-black/70 z-10"></div>
-        <div className="absolute inset-0 bg-[url('/hero-banner.jpg')] bg-cover bg-center"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center transition-all duration-500"
+          style={{ backgroundImage: `url('${heroImages[currentImageIndex]}')` }}
+        ></div>
+        
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevImage}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors"
+          aria-label="Previous image"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        
+        <button
+          onClick={nextImage}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors"
+          aria-label="Next image"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        {/* Dots Indicators */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                index === currentImageIndex
+                  ? "bg-white w-8"
+                  : "bg-white/50 hover:bg-white/75"
+              }`}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
+
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-2xl text-white">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
