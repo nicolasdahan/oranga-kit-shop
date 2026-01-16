@@ -267,7 +267,7 @@ export const clubs: Club[] = [
     leagueSlug: 'bundesliga',
     country: 'Germany',
     countryCode: 'DE',
-    logo: '/club_logo/Bayern_Munich_Logo.png', // You'll need to add this logo
+    logo: '/club_logo/Bayern_Munich_Logo.svg', // You'll need to add this logo
     stadium: 'Allianz Arena',
     founded: 1900,
     colors: ['#DC052D', '#0066B2'],

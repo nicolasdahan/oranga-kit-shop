@@ -18,13 +18,28 @@ const LeaguePage = () => {
   const leagueProducts = useMemo(() => {
     if (!league) return [];
     
-    const clubNames = clubs.map(c => c.name.toLowerCase());
-    return allProducts.filter(product => 
-      clubNames.some(clubName => 
-        product.team.toLowerCase().includes(clubName) ||
-        clubName.includes(product.team.toLowerCase())
-      )
-    );
+    // Normalize club name for matching
+    const normalizeClubName = (name: string) => {
+      return name.toLowerCase()
+        .replace(/^fc\s+/i, '')
+        .replace(/^ac\s+/i, '')
+        .replace(/^olympique\s+/i, '')
+        .replace(/\s+fc$/i, '')
+        .replace(/\s+hotspur$/i, '')
+        .trim();
+    };
+    
+    const normalizedClubNames = clubs.map(c => normalizeClubName(c.name));
+    
+    return allProducts.filter(product => {
+      const normalizedProductTeam = normalizeClubName(product.team);
+      
+      return normalizedClubNames.some(clubName => 
+        normalizedProductTeam === clubName ||
+        normalizedProductTeam.includes(clubName) ||
+        clubName.includes(normalizedProductTeam)
+      );
+    });
   }, [league, clubs, allProducts]);
 
   if (!league) {

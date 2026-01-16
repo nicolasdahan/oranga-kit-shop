@@ -19,10 +19,28 @@ const ClubPage = () => {
   // Filter products by club
   const clubProducts = useMemo(() => {
     if (!club) return [];
-    return allProducts.filter(product => 
-      product.team.toLowerCase() === club.name.toLowerCase() ||
-      product.team.toLowerCase().includes(club.name.toLowerCase())
-    );
+    
+    // Normalize club name for matching (remove FC, AC, etc.)
+    const normalizeClubName = (name: string) => {
+      return name.toLowerCase()
+        .replace(/^fc\s+/i, '')
+        .replace(/^ac\s+/i, '')
+        .replace(/^olympique\s+/i, '')
+        .replace(/\s+fc$/i, '')
+        .replace(/\s+hotspur$/i, '')
+        .trim();
+    };
+    
+    const normalizedClubName = normalizeClubName(club.name);
+    
+    return allProducts.filter(product => {
+      const normalizedProductTeam = normalizeClubName(product.team);
+      
+      // Check for exact match or partial match
+      return normalizedProductTeam === normalizedClubName ||
+             normalizedProductTeam.includes(normalizedClubName) ||
+             normalizedClubName.includes(normalizedProductTeam);
+    });
   }, [club, allProducts]);
 
   // Filter by kit type
