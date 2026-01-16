@@ -74,25 +74,26 @@ export const categories: Category[] = [
 // Produits par défaut (avec dateAdded pour le tri)
 const defaultProducts: Product[] = [
   {
-    id: "eng-home-2023",
-    name: "England Home Jersey 2023",
-    description: "Official England national team home jersey for the 2023 season. Features breathable fabric with the iconic Three Lions crest.",
-    price: 89.99,
-    images: ["/placeholder.svg"],
-    category: "national-teams",
-    team: "England",
+    id: "psg-home-2025",
+    name: "Paris Saint-Germain Pro Home Shirt 2024/25",
+    description: "Official Paris Saint-Germain professional home shirt for the 2024/25 season. Features advanced performance fabric with the iconic PSG crest.",
+    price: 139.99,
+    images: ["/images/products/psg-home-2025.jpg"],
+    category: "clubs",
+    team: "Paris Saint-Germain",
     size: ["S", "M", "L", "XL", "XXL"],
-    season: "2023/24",
+    season: "2024/25",
     inStock: true,
     featured: true,
     brand: "Nike",
-    competition: ["Euro"],
+    competition: ["League", "Champions League"],
     kitType: "Home",
     condition: "New",
     hasNameset: false,
-    format: "Stadium",
-    dateAdded: "2023-01-01T00:00:00.000Z"
-  },
+    format: "Player Issue",
+    dateAdded: "2024-07-01T00:00:00.000Z"
+  }
+  ,
   {
     id: "fra-home-2023",
     name: "France Home Jersey 2023",
