@@ -127,7 +127,7 @@ const Home = () => {
               className="block aspect-square relative rounded-lg overflow-hidden group"
             >
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors z-10"></div>
-              <img src="/placeholder.svg" alt="National Teams" className="w-full h-full object-cover" />
+              <img src="/league-logo/2026_FIFA_World_Cup_emblem.svg.png" alt="National Teams" className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex items-center justify-center z-20">
                 <span className="text-white font-bold text-lg">{t('category.nationalTeams')}</span>
               </div>
