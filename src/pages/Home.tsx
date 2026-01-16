@@ -33,7 +33,7 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section with Carousel */}
-      <section className="relative h-[500px] flex items-center">
+      <section className="relative h-[300px] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-black to-brand-black/70 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center transition-all duration-500"
