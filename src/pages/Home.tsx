@@ -138,7 +138,7 @@ const Home = () => {
               className="block aspect-square relative rounded-lg overflow-hidden group"
             >
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors z-10"></div>
-              <img src="/placeholder.svg" alt="Premier League" className="w-full h-full object-cover" />
+              <img src="/league-logo/premier-league-logo.jpg" alt="Premier League" className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex items-center justify-center z-20">
                 <span className="text-white font-bold text-lg">{t('category.premierLeague')}</span>
               </div>
@@ -149,7 +149,7 @@ const Home = () => {
               className="block aspect-square relative rounded-lg overflow-hidden group"
             >
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors z-10"></div>
-              <img src="/placeholder.svg" alt="La Liga" className="w-full h-full object-cover" />
+              <img src="/league-logo/LaLiga_logo_2023.svg.png" alt="La Liga" className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex items-center justify-center z-20">
                 <span className="text-white font-bold text-lg">{t('category.laLiga')}</span>
               </div>
@@ -160,7 +160,7 @@ const Home = () => {
               className="block aspect-square relative rounded-lg overflow-hidden group"
             >
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors z-10"></div>
-              <img src="/placeholder.svg" alt="Serie A" className="w-full h-full object-cover" />
+              <img src="/league-logo/Serie_A.svg.png" alt="Serie A" className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex items-center justify-center z-20">
                 <span className="text-white font-bold text-lg">{t('category.serieA')}</span>
               </div>
@@ -171,7 +171,7 @@ const Home = () => {
               className="block aspect-square relative rounded-lg overflow-hidden group"
             >
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors z-10"></div>
-              <img src="/placeholder.svg" alt="Bundesliga" className="w-full h-full object-cover" />
+              <img src="/league-logo/Bundesliga-logo.svg.png" alt="Bundesliga" className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex items-center justify-center z-20">
                 <span className="text-white font-bold text-lg">{t('category.bundesliga')}</span>
               </div>
@@ -182,7 +182,7 @@ const Home = () => {
               className="block aspect-square relative rounded-lg overflow-hidden group"
             >
               <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-colors z-10"></div>
-              <img src="/placeholder.svg" alt="Ligue 1" className="w-full h-full object-cover" />
+              <img src="/league-logo/ligue-1-logo.webp" alt="Ligue 1" className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex items-center justify-center z-20">
                 <span className="text-white font-bold text-lg">{t('category.ligue1')}</span>
               </div>
