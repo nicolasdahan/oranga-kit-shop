@@ -14,6 +14,18 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import NotFound from "./pages/NotFound";
 
+// Club pages
+import ClubsIndex from "./pages/clubs/ClubsIndex";
+import ClubPage from "./pages/clubs/ClubPage";
+
+// League pages
+import LeaguesIndex from "./pages/leagues/LeaguesIndex";
+import LeaguePage from "./pages/leagues/LeaguePage";
+
+// Collection pages
+import CollectionsIndex from "./pages/collections/CollectionsIndex";
+import CollectionPage from "./pages/collections/CollectionPage";
+
 function App() {
   return (
     <LanguageProvider>
@@ -22,15 +34,32 @@ function App() {
           <CartProvider>
             <BrowserRouter>
               <Layout>
-                                            <Routes>
-                              <Route path="/" element={<Home />} />
-                              <Route path="/catalog" element={<Catalog />} />
-                              <Route path="/product/:id" element={<ProductDetail />} />
-                              <Route path="/cart" element={<Cart />} />
-                              <Route path="/auth/login" element={<Login />} />
-                              <Route path="/auth/register" element={<Register />} />
-                              <Route path="*" element={<NotFound />} />
-                            </Routes>
+                <Routes>
+                  {/* Main pages */}
+                  <Route path="/" element={<Home />} />
+                  <Route path="/catalog" element={<Catalog />} />
+                  <Route path="/product/:id" element={<ProductDetail />} />
+                  <Route path="/cart" element={<Cart />} />
+                  
+                  {/* Club routes */}
+                  <Route path="/clubs" element={<ClubsIndex />} />
+                  <Route path="/clubs/:slug" element={<ClubPage />} />
+                  
+                  {/* League routes */}
+                  <Route path="/leagues" element={<LeaguesIndex />} />
+                  <Route path="/leagues/:slug" element={<LeaguePage />} />
+                  
+                  {/* Collection routes */}
+                  <Route path="/collections" element={<CollectionsIndex />} />
+                  <Route path="/collections/:slug" element={<CollectionPage />} />
+                  
+                  {/* Auth routes */}
+                  <Route path="/auth/login" element={<Login />} />
+                  <Route path="/auth/register" element={<Register />} />
+                  
+                  {/* 404 */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
               </Layout>
             </BrowserRouter>
           </CartProvider>

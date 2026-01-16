@@ -6,6 +6,7 @@ import ProductCard from "@/components/ProductCard";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/context/LanguageContext";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import ShopByClub from "@/components/home/ShopByClub";
 
 const Home = () => {
   const { t } = useLanguage();
@@ -91,6 +92,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Shop by Club Section */}
+      <ShopByClub />
 
       {/* New Arrivals Section */}
       <section className="py-16 bg-card">
