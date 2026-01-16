@@ -514,27 +514,6 @@ const defaultProducts: Product[] = [
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
   {
-    id: "psg-home-2025",
-    name: "Paris Saint-Germain Pro Home Shirt 2024/25",
-    description: "Official Paris Saint-Germain professional home shirt for the 2024/25 season. Features advanced performance fabric with the iconic PSG crest.",
-    price: 139.99,
-    images: ["/products/shirts/psg-pro-home-2025.jpg"],
-    category: "clubs",
-    team: "Paris Saint-Germain",
-    size: ["S", "M", "L", "XL", "XXL"],
-    season: "2024/25",
-    inStock: true,
-    featured: true,
-    brand: "Nike",
-    competition: ["League", "Champions League"],
-    kitType: "Home",
-    condition: "New",
-    hasNameset: false,
-    format: "Player Issue",
-    dateAdded: "2024-07-01T00:00:00.000Z"
-  }
-  ,
-  {
     id: "fra-home-2023",
     name: "France Home Jersey 2023",
     description: "Official France national team home jersey for the 2023 season. Features the tricolor design and embroidered cockerel crest.",
