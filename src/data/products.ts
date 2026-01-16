@@ -813,6 +813,46 @@ const defaultProducts: Product[] = [
     format: "Player Issue",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
+  {
+    id: "manchester-city-stadium-home-2022",
+    name: "Manchester City Stadium Home Shirt 2021/22",
+    description: "Official Manchester City stadium home shirt for the 2021/22 season. Classic sky blue design from the Premier League title-winning season.",
+    price: 79.99,
+    images: ["/products/shirts/manchester-city-stadium-home-2022.jpg"],
+    category: "premier-league",
+    team: "Manchester City",
+    size: ["S", "M", "L", "XL", "XXL"],
+    season: "2021/22",
+    inStock: true,
+    featured: false,
+    brand: "Puma",
+    competition: ["League", "Champions League"],
+    kitType: "Home",
+    condition: "New",
+    hasNameset: false,
+    format: "Stadium",
+    dateAdded: "2021-07-01T00:00:00.000Z"
+  },
+  {
+    id: "borussia-dortmund-stadium-home-2023",
+    name: "Borussia Dortmund Stadium Home Shirt 2022/23",
+    description: "Official Borussia Dortmund stadium home shirt for the 2022/23 season. Iconic yellow and black design with the legendary Yellow Wall spirit.",
+    price: 84.99,
+    images: ["/products/shirts/borussia-dortmund-stadium-home-2023.jpg"],
+    category: "bundesliga",
+    team: "Borussia Dortmund",
+    size: ["S", "M", "L", "XL", "XXL"],
+    season: "2022/23",
+    inStock: true,
+    featured: true,
+    brand: "Puma",
+    competition: ["League", "Champions League"],
+    kitType: "Home",
+    condition: "New",
+    hasNameset: false,
+    format: "Stadium",
+    dateAdded: "2022-07-01T00:00:00.000Z"
+  },
 ];
 
 // Fonction pour obtenir tous les produits (défaut + personnalisés)
