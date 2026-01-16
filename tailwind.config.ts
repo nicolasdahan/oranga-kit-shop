@@ -72,7 +72,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brand: {
-          orange: '#FF6B00',
+          orange: '#ADD8E6', // #FF6B00
           white: '#FFFFFF',
         }
 			},

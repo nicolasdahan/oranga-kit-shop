@@ -31,7 +31,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center group">
           <h1 className="text-2xl font-display font-bold">
             <span className="text-white group-hover:text-white/90 transition-all duration-300">
-              dadafoot
+              KitUp 
             </span>
             <span className="text-white/70 group-hover:text-white/60 transition-all duration-300">.com</span>
           </h1>
