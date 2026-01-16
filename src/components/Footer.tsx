@@ -19,7 +19,7 @@ const Footer = () => {
               <Building2 className="w-5 h-5 text-gray-600 mt-0.5" />
               <div>
                 <p className="font-semibold text-gray-900 mb-1">SIRET</p>
-                <p className="text-gray-600">123 456 789 00012</p>
+                <p className="text-gray-600">841 076 672 00010</p>
               </div>
             </div>
 
@@ -29,7 +29,7 @@ const Footer = () => {
               <div>
                 <p className="font-semibold text-gray-900 mb-1">Phone</p>
                 <a href="tel:+33123456789" className="text-gray-600 hover:text-primary transition-colors">
-                  +33 1 23 45 67 89
+                  +33 6 20 15 37 61
                 </a>
               </div>
             </div>
@@ -40,7 +40,7 @@ const Footer = () => {
               <div>
                 <p className="font-semibold text-gray-900 mb-1">Email</p>
                 <a href="mailto:contact@kitup.com" className="text-gray-600 hover:text-primary transition-colors">
-                  contact@kitup.com
+                kitup-contact@gmail.com
                 </a>
               </div>
             </div>
@@ -51,8 +51,8 @@ const Footer = () => {
               <div>
                 <p className="font-semibold text-gray-900 mb-1">Address</p>
                 <p className="text-gray-600">
-                  123 Rue Example<br />
-                  75001 Paris, France
+                  72 boulevard de Courcelles<br />
+                  75017 Paris, France
                 </p>
               </div>
             </div>
