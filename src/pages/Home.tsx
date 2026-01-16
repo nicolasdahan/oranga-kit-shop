@@ -74,12 +74,12 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-orange-500">
+            {/* <h1 className="text-4xl md:text-5xl font-bold mb-4 text-orange-500">
               {t('home.hero.title')}
             </h1>
             <p className="text-xl mb-8 text-orange-400">
               {t('home.hero.subtitle')}
-            </p>
+            </p> */}
             <div className="flex flex-wrap gap-4">
               <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Link to="/catalog">{t('home.hero.shopNow')}</Link>
