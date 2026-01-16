@@ -228,7 +228,7 @@ const SortAndFilters = ({
                 onCheckedChange={() => onFormatChange(format)}
               />
               <Label htmlFor={`format-${format}`} className="ml-2">
-                {t(`catalog.format.${format.toLowerCase().replace(/\s+/g, '')}`)}
+                {format}
               </Label>
             </div>
           ))}
