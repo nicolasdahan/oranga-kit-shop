@@ -74,71 +74,12 @@ const Home = () => {
 
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-2xl text-white">
-            {/* Decorative character border */}
-            <div className="border-4 border-transparent p-6 relative">
-              {/* Top border */}
-              <div 
-                className="absolute top-0 left-0 right-0 overflow-hidden whitespace-nowrap text-center leading-none"
-                style={{ 
-                  color: 'gold', 
-                  WebkitTextStroke: '1px darkblue',
-                  fontSize: '20px',
-                  height: '24px'
-                }}
-              >
-                {'Ա'.repeat(100)}
-              </div>
-              
-              {/* Bottom border */}
-              <div 
-                className="absolute bottom-0 left-0 right-0 overflow-hidden whitespace-nowrap text-center leading-none"
-                style={{ 
-                  color: 'gold', 
-                  WebkitTextStroke: '1px darkblue',
-                  fontSize: '20px',
-                  height: '24px'
-                }}
-              >
-                {'Ա'.repeat(100)}
-              </div>
-              
-              {/* Left border */}
-              <div 
-                className="absolute top-0 bottom-0 left-0 overflow-hidden text-center leading-tight"
-                style={{ 
-                  color: 'gold', 
-                  WebkitTextStroke: '1px darkblue',
-                  fontSize: '20px',
-                  width: '24px',
-                  writingMode: 'vertical-rl'
-                }}
-              >
-                {'Ա'.repeat(50)}
-              </div>
-              
-              {/* Right border */}
-              <div 
-                className="absolute top-0 bottom-0 right-0 overflow-hidden text-center leading-tight"
-                style={{ 
-                  color: 'gold', 
-                  WebkitTextStroke: '1px darkblue',
-                  fontSize: '20px',
-                  width: '24px',
-                  writingMode: 'vertical-rl'
-                }}
-              >
-                {'Ա'.repeat(50)}
-              </div>
-
-              {/* Main content */}
-              <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: 'gold', WebkitTextStroke: '2px darkblue' }}>
-                {t('home.hero.title')}
-              </h1>
-              <p className="text-xl mb-8" style={{ color: 'gold', WebkitTextStroke: '1px darkblue' }}>
-                {t('home.hero.subtitle')}
-              </p>
-            </div>
-            
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {t('home.hero.title')}
+            </h1>
+            <p className="text-xl mb-8">
+              {t('home.hero.subtitle')}
+            </p>
             <div className="flex flex-wrap gap-4">
               <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Link to="/catalog">{t('home.hero.shopNow')}</Link>
