@@ -73,11 +73,10 @@ const Home = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-2xl text-orange">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-orange-500">
               {t('home.hero.title')}
             </h1>
-            <p className="text-xl mb-8">
+            <p className="text-xl mb-8 text-orange-400">
               {t('home.hero.subtitle')}
             </p>
             <div className="flex flex-wrap gap-4">
