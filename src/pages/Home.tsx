@@ -16,7 +16,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative h-[500px] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-black to-brand-black/70 z-10"></div>
-        <div className="absolute inset-0 bg-[url('/placeholder.svg')] bg-cover bg-center"></div>
+        <div className="absolute inset-0 bg-[url('/hero-banner.jpg')] bg-cover bg-center"></div>
         <div className="container mx-auto px-4 relative z-20">
           <div className="max-w-2xl text-white">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
