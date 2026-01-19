@@ -29,6 +29,7 @@ import CollectionPage from "./pages/collections/CollectionPage";
 // Product category pages
 import Scarves from "./pages/Scarves";
 import Balls from "./pages/Balls";
+import NewArrivals from "./pages/NewArrivals";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
                   {/* Main pages */}
                   <Route path="/" element={<Home />} />
                   <Route path="/catalog" element={<Catalog />} />
+                  <Route path="/new-arrivals" element={<NewArrivals />} />
                   <Route path="/product/:id" element={<ProductDetail />} />
                   <Route path="/cart" element={<Cart />} />
                   

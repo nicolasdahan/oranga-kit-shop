@@ -112,7 +112,7 @@ const Home = () => {
           </div>
           <div className="mt-8 text-center">
             <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground">
-              <Link to="/catalog?filter=new">{t('home.viewAllNew')}</Link>
+              <Link to="/new-arrivals">{t('home.viewAllNew')}</Link>
             </Button>
           </div>
         </div>

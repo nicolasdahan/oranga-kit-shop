@@ -38,7 +38,7 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">
-          <Link to="/catalog?filter=new" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
+          <Link to="/new-arrivals" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
             {t('nav.newArrivals')}
           </Link>
           <Link to="/catalog" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
