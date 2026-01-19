@@ -26,6 +26,10 @@ import LeaguePage from "./pages/leagues/LeaguePage";
 import CollectionsIndex from "./pages/collections/CollectionsIndex";
 import CollectionPage from "./pages/collections/CollectionPage";
 
+// Product category pages
+import Scarves from "./pages/Scarves";
+import Balls from "./pages/Balls";
+
 function App() {
   return (
     <LanguageProvider>
@@ -52,6 +56,10 @@ function App() {
                   {/* Collection routes */}
                   <Route path="/collections" element={<CollectionsIndex />} />
                   <Route path="/collections/:slug" element={<CollectionPage />} />
+                  
+                  {/* Product category routes */}
+                  <Route path="/scarves" element={<Scarves />} />
+                  <Route path="/balls" element={<Balls />} />
                   
                   {/* Auth routes */}
                   <Route path="/auth/login" element={<Login />} />

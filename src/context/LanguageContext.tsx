@@ -17,9 +17,13 @@ const translations = {
     'nav.newArrivals': 'New Arrivals',
     'nav.clubs': 'Clubs',
     'nav.nationalTeams': 'National Teams',
+    'nav.scarves': 'Scarves',
+    'nav.balls': 'Balls',
     'nav.promotion': 'Promotion',
     'nav.namesetPatches': 'Nameset & Patches',
     'nav.searchPlaceholder': 'Search jerseys...',
+    'nav.accessories': 'Accessories',
+    'nav.equipment': 'Equipment',
     
     // Home page
     'home.hero.title': 'Official Football Jerseys',
@@ -187,9 +191,13 @@ const translations = {
     'nav.newArrivals': 'Nouveautés',
     'nav.clubs': 'Clubs',
     'nav.nationalTeams': 'Sélection nationales',
+    'nav.scarves': 'Écharpes',
+    'nav.balls': 'Ballons',
     'nav.promotion': 'Promotion',
     'nav.namesetPatches': 'Nameset & patches',
     'nav.searchPlaceholder': 'Rechercher des maillots...',
+    'nav.accessories': 'Accessoires',
+    'nav.equipment': 'Équipement',
     
     // Home page
     'home.hero.title': 'Maillots de Football Officiels',
@@ -322,9 +330,13 @@ const translations = {
     'nav.newArrivals': 'Novedades',
     'nav.clubs': 'Clubes',
     'nav.nationalTeams': 'Selecciones Nacionales',
+    'nav.scarves': 'Bufandas',
+    'nav.balls': 'Balones',
     'nav.promotion': 'Promoción',
     'nav.namesetPatches': 'Nameset & Parches',
     'nav.searchPlaceholder': 'Buscar camisetas...',
+    'nav.accessories': 'Accesorios',
+    'nav.equipment': 'Equipamiento',
     
     // Home page
     'home.hero.title': 'Camisetas de Fútbol Oficiales',

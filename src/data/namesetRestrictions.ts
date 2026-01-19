@@ -46,20 +46,13 @@ export const namesetRestrictions: NamesetRestrictionsConfig = {
       // Add other Ligue 1 clubs as needed
     ]
   },
-
-  'ucl-winners-15': {
-    allowedClubs: [
-      // Only clubs that have won the Champions League can wear this
-      { clubSlug: 'real-madrid', seasons: ['2025/26'] }, // Won 2025
-    ]
-  },
   
   // UEFA Champions League Nameset
   // All clubs playing in UCL use the same UEFA-mandated font
   'ucl-standard': {
     allowedClubs: [
       // Premier League
-      { clubSlug: 'manchester-city', seasons: ['2021/22', '2022/23', '2023/24', '2024/25'] },
+      { clubSlug: 'manchester-city', seasons: ['2021/22', '2022/23', '2023/24', '2024/25', '2025/26'] },
       { clubSlug: 'liverpool', seasons: ['2021/22', '2022/23', '2023/24'] },
       { clubSlug: 'chelsea', seasons: ['2021/22', '2022/23', '2023/24'] },
       { clubSlug: 'arsenal', seasons: ['2023/24', '2024/25'] },

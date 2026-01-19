@@ -47,6 +47,12 @@ const Navbar = () => {
           <Link to="/catalog?category=national-teams" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
             {t('nav.nationalTeams')}
           </Link>
+          <Link to="/scarves" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
+            {t('nav.scarves')}
+          </Link>
+          <Link to="/balls" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
+            {t('nav.balls')}
+          </Link>
           <Link to="/catalog?filter=sale" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift relative group">
             <span className="absolute -top-2 -right-6 bg-white text-[10px] text-primary px-1.5 py-0.5 rounded-full font-bold group-hover:scale-110 transition-transform duration-300">
               -20%

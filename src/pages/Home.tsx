@@ -118,6 +118,56 @@ const Home = () => {
         </div>
       </section>
 
+      {/* New Product Categories Section */}
+      <section className="py-16 bg-card">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">More Than Just Shirts</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Link 
+              to="/scarves" 
+              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div className="aspect-[4/3] relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800"></div>
+                <img 
+                  src="/scarf/scarf-psg-inter-2025.jpg" 
+                  alt="Football Scarves" 
+                  className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-70 group-hover:opacity-90 transition-opacity"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
+                  <h3 className="text-3xl font-bold mb-2 group-hover:scale-110 transition-transform">Scarves</h3>
+                  <p className="text-lg text-center">Official club & match scarves</p>
+                  <Button className="mt-4 bg-white text-blue-600 hover:bg-white/90">
+                    Shop Now
+                  </Button>
+                </div>
+              </div>
+            </Link>
+
+            <Link 
+              to="/balls" 
+              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div className="aspect-[4/3] relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600 to-orange-600"></div>
+                <img 
+                  src="/ball/euro-2008-silver.jpg" 
+                  alt="Match Balls" 
+                  className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-70 group-hover:opacity-90 transition-opacity"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
+                  <h3 className="text-3xl font-bold mb-2 group-hover:scale-110 transition-transform">Match Balls</h3>
+                  <p className="text-lg text-center">Official tournament balls</p>
+                  <Button className="mt-4 bg-white text-red-600 hover:bg-white/90">
+                    Shop Now
+                  </Button>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Categories Section */}
       <section className="py-16 bg-secondary">
         <div className="container mx-auto px-4">
