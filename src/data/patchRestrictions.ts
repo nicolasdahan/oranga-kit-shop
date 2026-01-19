@@ -102,7 +102,6 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'rb-leipzig', seasons: ['2024/25'] },
       
       // Ligue 1
-      { clubSlug: 'marseille', seasons: ['2024/25'] }
       { clubSlug: 'marseille', seasons: ['2024/25'] }, // Europa League in 2024/25 instead of CL
       { clubSlug: 'lyon', seasons: ['2023/24', '2024/25'] },
       { clubSlug: 'monaco', seasons: ['2023/24'] },
