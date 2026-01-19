@@ -125,14 +125,14 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'manchester-city', seasons: ['2025/26'] }, 
       { clubSlug: 'chelsea', seasons: '*' }, // Won 2021
       { clubSlug: 'liverpool', seasons: '*' }, // Won 2019
-      { clubSlug: 'real-madrid', seasons: '*' }, // Multiple wins, most recent 2022
-      { clubSlug: 'barcelona', seasons: '*' }, // Multiple wins
-      { clubSlug: 'inter-milan', seasons: '*' }, // Won 2010
-      { clubSlug: 'ac-milan', seasons: '*' }, // Multiple wins
-      { clubSlug: 'bayern-munich', seasons: '*' }, // Multiple wins, most recent 2020
-      { clubSlug: 'marseille', seasons: '*' }, // Won 1993
+      { clubSlug: 'real-madrid', seasons: '*' }, 
+      { clubSlug: 'barcelona', seasons: '*' }, 
+      { clubSlug: 'inter-milan', seasons: '*' },
+      { clubSlug: 'ac-milan', seasons: '*' },
+      { clubSlug: 'bayern-munich', seasons: '*' },
+      { clubSlug: 'marseille', seasons: ['1992/93'] }, // Won 1993
       { clubSlug: 'juventus', seasons: '*' }, // Won multiple times
-      { clubSlug: 'manchester-united', seasons: '*' }, // Won multiple times
+      { clubSlug: 'manchester-united', seasons: ['2008/09'] }, // Won multiple times
     ]
   },
   
