@@ -1,29 +1,53 @@
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductById } from "@/data/products";
+import { getCompatiblePatches, getPatchById, Patch } from "@/data/patches";
+import { getPlayersByTeam, hasAvailablePlayers, Player } from "@/data/players";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { ShoppingCart, Tag, Shirt, CreditCard } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { addItem } = useCart();
   const { t } = useLanguage();
+  const { formatPrice } = useCurrency();
   const product = id ? getProductById(id) : undefined;
   
   const [selectedSize, setSelectedSize] = useState<string>(product?.size[0] || "");
-  const [addPatches, setAddPatches] = useState<boolean>(false);
-  const [addNameset, setAddNameset] = useState<boolean>(false);
-  const [playerName, setPlayerName] = useState<string>("");
-  const [playerNumber, setPlayerNumber] = useState<string>("");
+  const [selectedPatches, setSelectedPatches] = useState<string[]>([]); // Array of patch IDs
+  const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null); // Player ID or null
+
+  // Get compatible patches for this product
+  const availablePatches = useMemo(() => {
+    if (!product) return [];
+    return getCompatiblePatches(product.category, product.competition);
+  }, [product]);
+
+  // Get available players for this team
+  const availablePlayers = useMemo(() => {
+    if (!product || !product.allowsPlayerCustomization) return [];
+    return getPlayersByTeam(product.team);
+  }, [product]);
+
+  const hasPlayerOptions = useMemo(() => {
+    return product ? hasAvailablePlayers(product.team) && product.allowsPlayerCustomization : false;
+  }, [product]);
 
   if (!product) {
     return (
@@ -37,36 +61,68 @@ const ProductDetail = () => {
     );
   }
 
+  const handlePatchToggle = (patchId: string) => {
+    setSelectedPatches(prev => {
+      if (prev.includes(patchId)) {
+        return prev.filter(id => id !== patchId);
+      } else {
+        return [...prev, patchId];
+      }
+    });
+  };
+
   const handleAddToCart = () => {
     if (selectedSize) {
+      const patchesData = selectedPatches.map(patchId => {
+        const patch = getPatchById(patchId);
+        return patch ? {
+          patchId: patch.id,
+          name: patch.name,
+          price: patch.price
+        } : null;
+      }).filter((p): p is { patchId: string; name: string; price: number } => p !== null);
+
+      const playerData = selectedPlayer ? (() => {
+        const player = availablePlayers.find(p => p.id === selectedPlayer);
+        return player ? {
+          playerId: player.id,
+          name: player.name,
+          number: player.number
+        } : null;
+      })() : null;
+
       const customizations = {
-        patches: addPatches,
-        nameset: addNameset ? { name: playerName, number: playerNumber } : null
+        patches: patchesData,
+        player: playerData
       };
+      
       addItem(product, selectedSize, customizations);
     }
   };
 
   const handlePaypalCheckout = () => {
     if (selectedSize) {
-      // Ici, vous intégrerez le code de paiement PayPal
-      // Pour l'exemple, nous allons juste afficher un message
+      // Implement PayPal checkout logic
       console.log('PayPal checkout with:', {
         product,
         size: selectedSize,
         customizations: {
-          patches: addPatches,
-          nameset: addNameset ? { name: playerName, number: playerNumber } : null
+          patches: selectedPatches,
+          player: selectedPlayer
         },
         totalPrice
       });
     }
   };
 
-  // Calculate additional costs
-  const patchesCost = addPatches ? 10 : 0;
-  const namesetCost = addNameset ? 20 : 0;
-  const totalPrice = product.price + patchesCost + namesetCost;
+  // Calculate total price
+  const patchesTotal = selectedPatches.reduce((sum, patchId) => {
+    const patch = getPatchById(patchId);
+    return sum + (patch?.price || 0);
+  }, 0);
+
+  const playerCost = selectedPlayer ? 20 : 0;
+  const totalPrice = product.price + patchesTotal + playerCost;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -89,8 +145,15 @@ const ProductDetail = () => {
           
           <div className="mb-6">
             <p className="text-3xl font-bold text-brand-orange">
-              ${totalPrice.toFixed(2)}
+              {formatPrice(totalPrice)}
             </p>
+            {(patchesTotal > 0 || playerCost > 0) && (
+              <p className="text-sm text-gray-500 mt-1">
+                Base price: {formatPrice(product.price)}
+                {patchesTotal > 0 && ` + Patches: ${formatPrice(patchesTotal)}`}
+                {playerCost > 0 && ` + Player: ${formatPrice(playerCost)}`}
+              </p>
+            )}
           </div>
           
           <div className="border-t border-b py-6 my-6">
@@ -128,86 +191,132 @@ const ProductDetail = () => {
             
             {/* Customization Options */}
             <div className="space-y-6">
-              <h3 className="font-medium mb-2">{t('product.customizationOptions')}:</h3>
+              <h3 className="font-medium text-lg mb-4">{t('product.customizationOptions')}:</h3>
               
-              {/* League Patches Option */}
-              <div className="flex items-start space-x-2">
-                <Checkbox 
-                  id="patches" 
-                  checked={addPatches}
-                  onCheckedChange={(checked) => setAddPatches(checked === true)}
-                  className="mt-1"
-                />
-                <div className="grid gap-1.5 leading-none">
-                  <div className="flex items-center gap-2">
-                    <Label htmlFor="patches" className="text-sm font-medium leading-none">
-                      {t('product.addLeaguePatches')}
-                    </Label>
-                    <Badge variant="new" className="text-xs">+€10.00</Badge>
+              {/* League Patches Section */}
+              {availablePatches.length > 0 && (
+                <div className="space-y-4">
+                  <h4 className="font-medium text-base">Available Patches</h4>
+                  <div className="space-y-3">
+                    {availablePatches.map((patch: Patch) => (
+                      <div 
+                        key={patch.id} 
+                        className="flex items-start space-x-3 p-3 border rounded-lg hover:border-brand-orange transition-colors"
+                      >
+                        <Checkbox 
+                          id={`patch-${patch.id}`}
+                          checked={selectedPatches.includes(patch.id)}
+                          onCheckedChange={() => handlePatchToggle(patch.id)}
+                          className="mt-1"
+                        />
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              {/* Patch Image Placeholder */}
+                              <div className="w-12 h-12 bg-gray-100 rounded border flex items-center justify-center overflow-hidden">
+                                <img 
+                                  src={patch.image} 
+                                  alt={patch.name}
+                                  className="w-full h-full object-contain"
+                                  onError={(e) => {
+                                    // Fallback to icon if image doesn't exist
+                                    e.currentTarget.style.display = 'none';
+                                    e.currentTarget.parentElement!.innerHTML = '<Tag className="w-6 h-6 text-gray-400" />';
+                                  }}
+                                />
+                              </div>
+                              <div>
+                                <Label 
+                                  htmlFor={`patch-${patch.id}`} 
+                                  className="text-sm font-medium cursor-pointer"
+                                >
+                                  {patch.name}
+                                </Label>
+                                <p className="text-xs text-muted-foreground mt-0.5">
+                                  {patch.description}
+                                </p>
+                              </div>
+                            </div>
+                            <Badge variant="new" className="text-xs whitespace-nowrap">
+                              +{formatPrice(patch.price)}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {t('product.patchesDesc')}
-                  </p>
+                  {selectedPatches.length > 0 && (
+                    <p className="text-sm text-gray-600 pl-3">
+                      {selectedPatches.length} patch{selectedPatches.length > 1 ? 'es' : ''} selected
+                    </p>
+                  )}
                 </div>
-              </div>
+              )}
               
-              {/* Name & Number Option */}
-              <div className="flex items-start space-x-2">
-                <Checkbox 
-                  id="nameset" 
-                  checked={addNameset}
-                  onCheckedChange={(checked) => setAddNameset(checked === true)}
-                  className="mt-1"
-                />
-                <div className="grid gap-1.5 leading-none">
-                  <div className="flex items-center gap-2">
-                    <Label htmlFor="nameset" className="text-sm font-medium leading-none">
-                      {t('product.addNameNumber')}
-                    </Label>
-                    <Badge variant="new" className="text-xs">+€20.00</Badge>
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                    {t('product.nameNumberDesc')}
-                  </p>
-                </div>
-              </div>
-              
-              {/* Name & Number Input Fields (conditional) */}
-              {addNameset && (
-                <div className="pl-6 mt-2 space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="playerName">{t('product.playerName')}</Label>
-                    <div className="flex items-center">
-                      <Shirt className="w-5 h-5 mr-2 text-gray-500" />
-                      <Input 
-                        id="playerName"
-                        value={playerName}
-                        onChange={(e) => setPlayerName(e.target.value)}
-                        placeholder={t('product.enterPlayerName')}
-                        className="max-w-xs"
-                      />
-                    </div>
+              {/* Player Name & Number Section */}
+              {hasPlayerOptions && availablePlayers.length > 0 && (
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-medium text-base">Official Player Name & Number</h4>
+                    {selectedPlayer && (
+                      <Badge variant="new" className="text-xs">
+                        +{formatPrice(20)}
+                      </Badge>
+                    )}
                   </div>
                   
-                  <div className="space-y-2">
-                    <Label htmlFor="playerNumber">{t('product.number')}</Label>
-                    <div className="flex items-center">
-                      <Tag className="w-5 h-5 mr-2 text-gray-500" />
-                      <Input 
-                        id="playerNumber"
-                        value={playerNumber}
-                        onChange={(e) => {
-                          // Allow only numbers with max 2 digits
-                          const value = e.target.value.replace(/[^0-9]/g, '');
-                          if (value.length <= 2) {
-                            setPlayerNumber(value);
-                          }
-                        }}
-                        placeholder="1-99"
-                        className="max-w-[100px]"
-                      />
-                    </div>
+                  <div className="space-y-3">
+                    <Label htmlFor="player-select" className="text-sm">
+                      Select an official player for this team
+                    </Label>
+                    <Select value={selectedPlayer || undefined} onValueChange={setSelectedPlayer}>
+                      <SelectTrigger id="player-select" className="w-full">
+                        <SelectValue placeholder="Choose a player (optional)" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="none">No player</SelectItem>
+                        {availablePlayers.map((player: Player) => (
+                          <SelectItem key={player.id} value={player.id}>
+                            <div className="flex items-center justify-between w-full gap-4">
+                              <span className="font-medium">{player.name}</span>
+                              <span className="text-sm text-gray-500">#{player.number}</span>
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    
+                    {selectedPlayer && selectedPlayer !== "none" && (
+                      <div className="p-3 bg-gray-50 rounded-lg border">
+                        {(() => {
+                          const player = availablePlayers.find(p => p.id === selectedPlayer);
+                          return player ? (
+                            <div className="flex items-center gap-3">
+                              <Shirt className="w-5 h-5 text-brand-orange" />
+                              <div>
+                                <p className="font-medium">{player.name}</p>
+                                <p className="text-sm text-gray-600">
+                                  Number {player.number} • {player.position}
+                                </p>
+                              </div>
+                            </div>
+                          ) : null;
+                        })()}
+                      </div>
+                    )}
+                    
+                    <p className="text-xs text-muted-foreground">
+                      Official player names and numbers are printed using authentic fonts and materials (+€20.00)
+                    </p>
                   </div>
+                </div>
+              )}
+
+              {!hasPlayerOptions && (
+                <div className="p-4 bg-gray-50 rounded-lg border">
+                  <p className="text-sm text-gray-600">
+                    Player customization is not available for this product.
+                  </p>
                 </div>
               )}
             </div>

@@ -3,14 +3,21 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 import { Product } from '../data/products';
 import { toast } from 'sonner';
 
-type NameSet = {
+type SelectedPatch = {
+  patchId: string;
   name: string;
-  number: string;
-} | null;
+  price: number;
+};
+
+type SelectedPlayer = {
+  playerId: string;
+  name: string;
+  number: number;
+};
 
 type Customizations = {
-  patches: boolean;
-  nameset: NameSet;
+  patches: SelectedPatch[]; // Array of selected patches with their details
+  player: SelectedPlayer | null; // Selected official player or null
 };
 
 export type CartItem = {
@@ -95,11 +102,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       
       // Add customization costs
       if (item.customizations) {
-        if (item.customizations.patches) {
-          itemPrice += 10 * item.quantity; // €10 per patch set
+        // Add patch costs (each patch has its own price)
+        if (item.customizations.patches && item.customizations.patches.length > 0) {
+          const patchesTotal = item.customizations.patches.reduce(
+            (sum, patch) => sum + patch.price, 
+            0
+          );
+          itemPrice += patchesTotal * item.quantity;
         }
-        if (item.customizations.nameset) {
-          itemPrice += 20 * item.quantity; // €20 per nameset
+        
+        // Player name and number is now a fixed cost (20€)
+        if (item.customizations.player) {
+          itemPrice += 20 * item.quantity; // €20 per player nameset
         }
       }
       

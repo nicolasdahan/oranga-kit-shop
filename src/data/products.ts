@@ -22,7 +22,8 @@ export type Product = {
   competition: Competition[];
   kitType: KitType;
   condition: Condition;
-  hasNameset: boolean;
+  hasNameset: boolean; // @deprecated - use allowsPlayerCustomization instead
+  allowsPlayerCustomization: boolean; // Whether customer can select official players
   format: JerseyFormat;
   dateAdded: string; // ISO date string
 };
@@ -90,6 +91,7 @@ const defaultProducts: Product[] = [
     kitType: "Away",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
@@ -110,6 +112,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2021-07-01T00:00:00.000Z"
   },
@@ -130,6 +133,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2019-07-01T00:00:00.000Z"
   },
@@ -150,6 +154,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -170,6 +175,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2019-07-01T00:00:00.000Z"
   },
@@ -190,6 +196,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2024-07-01T00:00:00.000Z"
   },
@@ -210,6 +217,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
@@ -230,6 +238,7 @@ const defaultProducts: Product[] = [
     kitType: "Away",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
@@ -250,6 +259,7 @@ const defaultProducts: Product[] = [
     kitType: "Third",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2024-07-01T00:00:00.000Z"
   },
@@ -270,6 +280,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2024-07-01T00:00:00.000Z"
   },
@@ -290,6 +301,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
@@ -310,6 +322,7 @@ const defaultProducts: Product[] = [
     kitType: "Away",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
@@ -330,6 +343,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
@@ -350,6 +364,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2022-07-01T00:00:00.000Z"
   },
@@ -370,6 +385,7 @@ const defaultProducts: Product[] = [
     kitType: "Special Edition",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2024-07-01T00:00:00.000Z"
   },
@@ -390,6 +406,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: false, // Shorts don't get player names
     format: "Stadium",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
@@ -410,6 +427,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -430,6 +448,7 @@ const defaultProducts: Product[] = [
     kitType: "Away",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -450,6 +469,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2021-07-01T00:00:00.000Z"
   },
@@ -470,6 +490,7 @@ const defaultProducts: Product[] = [
     kitType: "Third",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2021-07-01T00:00:00.000Z"
   },
@@ -490,6 +511,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2024-07-01T00:00:00.000Z"
   },
@@ -510,6 +532,7 @@ const defaultProducts: Product[] = [
     kitType: "Third",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2024-07-01T00:00:00.000Z"
   },
@@ -530,6 +553,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -550,6 +574,7 @@ const defaultProducts: Product[] = [
     kitType: "Third",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -570,6 +595,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -590,6 +616,7 @@ const defaultProducts: Product[] = [
     kitType: "Away",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2024-07-01T00:00:00.000Z"
   },
@@ -610,6 +637,7 @@ const defaultProducts: Product[] = [
     kitType: "Away",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
@@ -630,6 +658,7 @@ const defaultProducts: Product[] = [
     kitType: "Third",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -650,6 +679,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -670,6 +700,7 @@ const defaultProducts: Product[] = [
     kitType: "Away",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -690,6 +721,7 @@ const defaultProducts: Product[] = [
     kitType: "Third",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -710,6 +742,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2020-07-01T00:00:00.000Z"
   },
@@ -730,6 +763,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2017-07-01T00:00:00.000Z"
   },
@@ -750,6 +784,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2020-07-01T00:00:00.000Z"
   },
@@ -770,6 +805,7 @@ const defaultProducts: Product[] = [
     kitType: "Away",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2025-07-01T00:00:00.000Z"
   },
@@ -790,6 +826,7 @@ const defaultProducts: Product[] = [
     kitType: "Third",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2019-07-01T00:00:00.000Z"
   },
@@ -810,6 +847,7 @@ const defaultProducts: Product[] = [
     kitType: "Third",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Player Issue",
     dateAdded: "2023-07-01T00:00:00.000Z"
   },
@@ -830,6 +868,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2021-07-01T00:00:00.000Z"
   },
@@ -850,6 +889,7 @@ const defaultProducts: Product[] = [
     kitType: "Home",
     condition: "New",
     hasNameset: false,
+    allowsPlayerCustomization: true,
     format: "Stadium",
     dateAdded: "2022-07-01T00:00:00.000Z"
   },

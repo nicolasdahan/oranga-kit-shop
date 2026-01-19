@@ -3,14 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useCart } from "@/context/CartContext";
-import { Trash2, CreditCard } from "lucide-react";
+import { Trash2, CreditCard, Tag, Shirt } from "lucide-react";
 import { toast } from "sonner";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { useCurrency } from "@/context/CurrencyContext";
 
 const Cart = () => {
   const { items, removeItem, updateQuantity, clearCart, cartTotal } = useCart();
+  const { formatPrice } = useCurrency();
   const navigate = useNavigate();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("card");
@@ -71,77 +73,125 @@ const Cart = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {items.map((item) => (
-                    <tr key={`${item.product.id}-${item.size}`}>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded bg-gray-100">
-                            <img
-                              src={item.product.images[0]}
-                              alt={item.product.name}
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              <Link to={`/product/${item.product.id}`} className="hover:text-brand-orange">
-                                {item.product.name}
-                              </Link>
+                  {items.map((item) => {
+                    // Calculate item total with customizations
+                    const patchesTotal = item.customizations?.patches?.reduce(
+                      (sum, patch) => sum + patch.price, 
+                      0
+                    ) || 0;
+                    const playerCost = item.customizations?.player ? 20 : 0;
+                    const itemTotal = (item.product.price + patchesTotal + playerCost) * item.quantity;
+
+                    return (
+                      <tr key={`${item.product.id}-${item.size}-${JSON.stringify(item.customizations)}`}>
+                        <td className="px-6 py-4">
+                          <div className="flex items-center">
+                            <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded bg-gray-100">
+                              <img
+                                src={item.product.images[0]}
+                                alt={item.product.name}
+                                className="h-full w-full object-cover"
+                              />
                             </div>
-                            <div className="text-sm text-gray-500">{item.product.team}</div>
+                            <div className="ml-4">
+                              <div className="text-sm font-medium text-gray-900">
+                                <Link to={`/product/${item.product.id}`} className="hover:text-brand-orange">
+                                  {item.product.name}
+                                </Link>
+                              </div>
+                              <div className="text-sm text-gray-500">{item.product.team}</div>
+                              
+                              {/* Display customizations */}
+                              {item.customizations && (
+                                <div className="mt-2 space-y-1">
+                                  {/* Display patches */}
+                                  {item.customizations.patches && item.customizations.patches.length > 0 && (
+                                    <div className="flex items-start gap-1 text-xs">
+                                      <Tag className="w-3 h-3 mt-0.5 text-brand-orange" />
+                                      <div>
+                                        <span className="font-medium">Patches: </span>
+                                        {item.customizations.patches.map((patch, idx) => (
+                                          <span key={patch.patchId}>
+                                            {patch.name}
+                                            {idx < item.customizations.patches.length - 1 ? ', ' : ''}
+                                          </span>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  )}
+                                  
+                                  {/* Display player */}
+                                  {item.customizations.player && (
+                                    <div className="flex items-center gap-1 text-xs">
+                                      <Shirt className="w-3 h-3 text-brand-orange" />
+                                      <span className="font-medium">Player: </span>
+                                      <span>{item.customizations.player.name} #{item.customizations.player.number}</span>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {item.size}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ${item.product.price.toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            className="h-8 w-8"
-                            onClick={() => handleQuantityChange(item.product.id, item.size, item.quantity - 1)}
-                          >
-                            <span>-</span>
-                          </Button>
-                          <Input
-                            className="w-16 mx-2 text-center"
-                            type="number"
-                            min="1"
-                            value={item.quantity}
-                            onChange={(e) => handleQuantityChange(
-                              item.product.id, 
-                              item.size, 
-                              parseInt(e.target.value) || 1
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {item.size}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-gray-500">
+                          <div>
+                            <div>{formatPrice(item.product.price)}</div>
+                            {(patchesTotal > 0 || playerCost > 0) && (
+                              <div className="text-xs text-gray-400 mt-1">
+                                {patchesTotal > 0 && <div>+ Patches: {formatPrice(patchesTotal)}</div>}
+                                {playerCost > 0 && <div>+ Player: {formatPrice(playerCost)}</div>}
+                              </div>
                             )}
-                          />
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            className="h-8 w-8"
-                            onClick={() => handleQuantityChange(item.product.id, item.size, item.quantity + 1)}
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              className="h-8 w-8"
+                              onClick={() => handleQuantityChange(item.product.id, item.size, item.quantity - 1)}
+                            >
+                              <span>-</span>
+                            </Button>
+                            <Input
+                              className="w-16 mx-2 text-center"
+                              type="number"
+                              min="1"
+                              value={item.quantity}
+                              onChange={(e) => handleQuantityChange(
+                                item.product.id, 
+                                item.size, 
+                                parseInt(e.target.value) || 1
+                              )}
+                            />
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              className="h-8 w-8"
+                              onClick={() => handleQuantityChange(item.product.id, item.size, item.quantity + 1)}
+                            >
+                              <span>+</span>
+                            </Button>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          {formatPrice(itemTotal)}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                          <button
+                            onClick={() => removeItem(item.product.id, item.size, item.customizations)}
+                            className="text-red-500 hover:text-red-700"
                           >
-                            <span>+</span>
-                          </Button>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        ${(item.product.price * item.quantity).toFixed(2)}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <button
-                          onClick={() => removeItem(item.product.id, item.size)}
-                          className="text-red-500 hover:text-red-700"
-                        >
-                          <Trash2 className="h-5 w-5" />
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
+                            <Trash2 className="h-5 w-5" />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -172,18 +222,18 @@ const Cart = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span>${cartTotal.toFixed(2)}</span>
+                  <span>{formatPrice(cartTotal)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Shipping</span>
-                  <span>{cartTotal > 100 ? "Free" : "$10.00"}</span>
+                  <span>{cartTotal > 100 ? "Free" : formatPrice(10)}</span>
                 </div>
               </div>
               
               <div className="border-t my-4 pt-4">
                 <div className="flex justify-between font-semibold">
                   <span>Total</span>
-                  <span>${(cartTotal + (cartTotal > 100 ? 0 : 10)).toFixed(2)}</span>
+                  <span>{formatPrice(cartTotal + (cartTotal > 100 ? 0 : 10))}</span>
                 </div>
               </div>
               
