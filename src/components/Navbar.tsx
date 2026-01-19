@@ -104,6 +104,15 @@ const Navbar = () => {
           </Link>
 
           <Link 
+            to="/bags" 
+            className="relative px-4 py-2 text-sm font-semibold text-white hover:text-white transition-all duration-300 group"
+          >
+            <span className="relative z-10">{t('nav.bags')}</span>
+            <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-lg transition-all duration-300"></div>
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-white group-hover:w-3/4 transition-all duration-300"></div>
+          </Link>
+
+          <Link 
             to="/catalog?filter=sale" 
             className="relative px-4 py-2 text-sm font-semibold text-white hover:text-white transition-all duration-300 group"
           >
@@ -231,6 +240,13 @@ const Navbar = () => {
             className="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition-colors duration-300"
           >
             {t('nav.balls')}
+          </Link>
+          <Link 
+            to="/bags" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block px-4 py-3 text-white hover:bg-white/10 rounded-lg transition-colors duration-300"
+          >
+            {t('nav.bags')}
           </Link>
           <Link 
             to="/catalog?filter=sale" 
