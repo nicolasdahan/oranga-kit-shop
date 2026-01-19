@@ -215,7 +215,7 @@ export const patches: Patch[] = [
     compatibleCompetitions: ['Champions League']
   },
   {
-    id: 'ucl-winners-standard-2021/26',
+    id: 'ucl-winners-standard-2021-26',
     name: 'UEFA Champions League Winners Badge 2021/26 with Foundation Patch',
     description: 'Champions League winners badge',
     price: 15.00,
