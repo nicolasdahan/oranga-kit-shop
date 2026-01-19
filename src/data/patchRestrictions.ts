@@ -153,6 +153,36 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'marseille', seasons: ['2010/11'] }, // Won 2010 */
     ]
   },
+
+// Ligue 1 Standard Patch
+  'ligue-1-standard': {
+    allowedClubs: [
+    
+        // Ligue 1 clubs
+        { clubSlug: 'psg', seasons: ['2017', '2022'] },
+        { clubSlug: 'lyon', seasons: '*' },
+        { clubSlug: 'marseille', seasons: '*' },
+        { clubSlug: 'monaco', seasons: '*' },
+    ]
+    },
+      
+    // FIFA World Cup Patch
+   'world-cup-standard': {
+    allowedClubs: [
+        // National teams that qualified for World Cup - this is an example
+        // You can customize based on which teams qualified
+        /*{ clubSlug: 'france', seasons: ['2022', '2026'] },
+        { clubSlug: 'argentina', seasons: ['2022', '2026'] },
+        { clubSlug: 'germany', seasons: ['2022', '2026'] },
+        { clubSlug: 'spain', seasons: ['2022', '2026'] },
+        { clubSlug: 'england', seasons: ['2022', '2026'] },
+        { clubSlug: 'brazil', seasons: ['2022', '2026'] },
+        { clubSlug: 'italy', seasons: ['2022', '2026'] },
+        { clubSlug: 'netherlands', seasons: ['2022', '2026'] },
+        { clubSlug: 'belgium', seasons: ['2022', '2026'] },
+        { clubSlug: 'portugal', seasons: ['2022', '2026'] },*/
+    ]
+    },
 };
 
 /**
