@@ -281,4 +281,18 @@
   .animate-ken-burns {
     animation: ken-burns 20s ease-out infinite alternate;
   }
+
+  /* Shimmer effect for banner */
+  @keyframes shimmer {
+    0% {
+      background-position: -250% 0;
+    }
+    100% {
+      background-position: 250% 0;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 8s ease-in-out infinite;
+  }
 }
