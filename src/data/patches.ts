@@ -95,16 +95,6 @@ export const patches: Patch[] = [
 
   // Ligue 1 Patches
   {
-    id: 'ligue-1-standard',
-    name: 'Ligue 1 Standard Patch',
-    description: 'Official Ligue 1 sleeve patch',
-    price: 8.00,
-    image: '/patches/ligue-1-standard.png',
-    compatibleLeagues: ['ligue-1'],
-    compatibleCompetitions: ['League']
-  },
-
-  {
     id: 'ligue-1-standard-2017-19',
     name: 'Ligue 1 Standard Patch 2017-19',
     description: 'Official Ligue 1 sleeve patch (2017/18 - 2018/19)',
