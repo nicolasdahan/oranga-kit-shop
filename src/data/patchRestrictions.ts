@@ -184,6 +184,35 @@ export const patchRestrictions: PatchRestrictionsConfig = {
         { clubSlug: 'portugal', seasons: ['2022', '2026'] },*/
     ]
     },
+
+    'euro-standard-2020': {
+    allowedClubs: [
+        // National teams that qualified for World Cup - this is an example
+        // You can customize based on which teams qualified
+        { clubSlug: 'france', seasons: ['2019/20'] },
+        { clubSlug: 'italy', seasons: ['2020/21'] },
+        { clubSlug: 'england', seasons: ['2020/21'] },
+        { clubSlug: 'spain', seasons: ['2020/21'] },
+        { clubSlug: 'germany', seasons: ['2020/21'] },
+        { clubSlug: 'portugal', seasons: ['2020/21'] },
+        { clubSlug: 'belgium', seasons: ['2020/21'] },
+        { clubSlug: 'netherlands', seasons: ['2020/21'] },
+    ]
+    },
+    'euro-standard-2024': {
+    allowedClubs: [
+        // National teams that qualified for World Cup - this is an example
+        // You can customize based on which teams qualified
+        { clubSlug: 'france', seasons: ['2023/24'] },
+        { clubSlug: 'germany', seasons: ['2023/24'] },
+        { clubSlug: 'spain', seasons: ['2023/24'] },
+        { clubSlug: 'italy', seasons: ['2023/24'] },
+        { clubSlug: 'england', seasons: ['2023/24'] },
+        { clubSlug: 'portugal', seasons: ['2023/24'] },
+        { clubSlug: 'belgium', seasons: ['2023/24'] },
+        { clubSlug: 'netherlands', seasons: ['2023/24'] },
+    ]
+    },
 };
 
 /**

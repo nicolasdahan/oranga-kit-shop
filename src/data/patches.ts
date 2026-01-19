@@ -153,11 +153,20 @@ export const patches: Patch[] = [
     compatibleCompetitions: ['World Cup']
   },
   {
-    id: 'euro-standard',
-    name: 'UEFA Euro Championship Patch',
-    description: 'Official UEFA Euro badge',
+    id: 'euro-standard-2020',
+    name: 'UEFA Euro Championship Patch 2020',
+    description: 'Official UEFA Euro badge 2020',
     price: 10.00,
-    image: '/patches/euro-standard.png',
+    image: '/patches/euro-standard-2020.png',
+    compatibleLeagues: ['national-teams'],
+    compatibleCompetitions: ['Euro']
+  },
+  {
+    id: 'euro-standard-2024',
+    name: 'UEFA Euro Championship Patch 2024',
+    description: 'Official UEFA Euro badge 2024',
+    price: 10.00,
+    image: '/patches/euro-standard-2024.png',
     compatibleLeagues: ['national-teams'],
     compatibleCompetitions: ['Euro']
   },
