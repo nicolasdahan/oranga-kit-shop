@@ -147,21 +147,19 @@ export const patchRestrictions: PatchRestrictionsConfig = {
   },    
   
   // UEFA Champions League Winners Badge
-  'ucl-winners': {
+  'ucl-winners-standard-2021-26': {
     allowedClubs: [
       // Only clubs that have won the Champions League can wear this
+      { clubSlug: 'psg', seasons: ['2025/26'] }, // Won 2025
       { clubSlug: 'manchester-city', seasons: ['2023/24'] }, // Won 2023
-      { clubSlug: 'manchester-city', seasons: ['2025/26'] }, 
-      { clubSlug: 'chelsea', seasons: ['2011/12', '2020/21'] }, // Won 2021
-      { clubSlug: 'liverpool', seasons: ['2018/19'] }, // Won 2019
-      { clubSlug: 'real-madrid', seasons: ['2013/14', '2015/16', '2016/17', '2017/18', '2021/22', '2023/24'] }, 
-      { clubSlug: 'barcelona', seasons: ['2008/09', '2010/11', '2014/15'] }, 
-      { clubSlug: 'inter-milan', seasons: ['2009/10'] },
-      { clubSlug: 'ac-milan', seasons: '*' },
-      { clubSlug: 'bayern-munich', seasons: '*' },
-      { clubSlug: 'marseille', seasons: ['1992/93'] }, // Won 1993
-      { clubSlug: 'juventus', seasons: '*' }, // Won multiple times
-      { clubSlug: 'manchester-united', seasons: ['2008/09'] }, // Won multiple times
+      { clubSlug: 'chelsea', seasons: ['2021/22'] }, // Won 2021
+    ]
+  },
+
+  'ucl-winners-15': {
+    allowedClubs: [
+      // Only clubs that have won the Champions League can wear this
+      { clubSlug: 'real', seasons: ['2025/26'] }, // Won 2025
     ]
   },
   

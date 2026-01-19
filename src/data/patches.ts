@@ -215,11 +215,20 @@ export const patches: Patch[] = [
     compatibleCompetitions: ['Champions League']
   },
   {
-    id: 'ucl-winners',
-    name: 'UEFA Champions League Winners Badge',
+    id: 'ucl-winners-standard-2021/26',
+    name: 'UEFA Champions League Winners Badge 2021/26 with Foundation Patch',
     description: 'Champions League winners badge',
     price: 15.00,
-    image: '/patches/ucl-winners.png',
+    image: '/patches/ucl-winners-standard-2021-26.png',
+    compatibleLeagues: ['premier-league', 'la-liga', 'serie-a', 'bundesliga', 'ligue-1'],
+    compatibleCompetitions: ['Champions League']
+  },
+  {
+    id: 'ucl-winners-15',
+    name: 'UEFA Champions League Winners Badge 15 + Foundation Patch',
+    description: 'Champions League winners badge + Foundation Patch',
+    price: 15.00,
+    image: '/patches/ucl-winners-15.png',
     compatibleLeagues: ['premier-league', 'la-liga', 'serie-a', 'bundesliga', 'ligue-1'],
     compatibleCompetitions: ['Champions League']
   },
