@@ -17,7 +17,7 @@ The shop features a completely redesigned customization system:
 - [Full System Documentation](CUSTOMIZATION_SYSTEM.md) - Complete technical details
 - [Implementation Summary](IMPLEMENTATION_SUMMARY.md) - What changed and why
 
-### Patch Restrictions System (NEW!)
+### Patch Restrictions System
 
 Control which patches appear for which clubs in which seasons:
 
@@ -32,6 +32,21 @@ Control which patches appear for which clubs in which seasons:
 - [Implementation Summary](PATCH_RESTRICTIONS_SUMMARY.md) - Technical overview
 
 **Example:** Marseille qualified for Champions League in 2023/24 but Europa League in 2024/25. The system automatically shows the correct patches based on the product's season.
+
+### Nameset Restrictions System (NEW!)
+
+Control which fonts/styles are used for player names based on competition:
+
+- **Competition-Based Fonts**: Different fonts for League vs Champions League vs Europa League
+- **Club-Specific Fonts**: PSG uses Ligue 1 font domestically, Champions League font in UCL
+- **Season-Based Fonts**: Track font updates and changes over seasons
+- **Automatic Selection**: System chooses correct font based on product's competition
+
+📚 **Nameset Restrictions Documentation:**
+- [Complete Guide](NAMESET_RESTRICTIONS_GUIDE.md) - Full documentation with examples
+- [Examples & Test Cases](NAMESET_RESTRICTIONS_EXAMPLES.md) - Real-world scenarios (PSG, Marseille)
+
+**Example:** PSG uses Ligue 1 font for domestic league matches but UEFA Champions League font for European matches. The system automatically provides the correct nameset type based on the product's competition.
 
 ## Project info
 

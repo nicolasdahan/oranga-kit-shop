@@ -5,6 +5,8 @@
  * For example, PSG uses one font style for Ligue 1 matches and another for Champions League.
  */
 
+import { isNamesetAllowedForClub, getClubSlugFromTeamName } from './namesetRestrictions';
+
 export type NamesetType = {
   id: string;
   name: string;
@@ -156,7 +158,6 @@ export const getCompatibleNamesets = (
   
   // If team and season provided, apply restrictions
   if (teamName && season) {
-    const { isNamesetAllowedForClub, getClubSlugFromTeamName } = require('./namesetRestrictions');
     const clubSlug = getClubSlugFromTeamName(teamName);
     
     compatibleNamesets = compatibleNamesets.filter(nameset =>
