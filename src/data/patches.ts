@@ -15,11 +15,29 @@ export type Patch = {
 export const patches: Patch[] = [
   // Premier League Patches
   {
-    id: 'premier-league-standard',
-    name: 'Premier League Standard Patch',
-    description: 'Official Premier League sleeve patch',
+    id: 'premier-league-standard-2016-19',
+    name: 'Premier League Standard Patch 2016/17 - 2019/20',
+    description: 'Official Premier League sleeve patch (2016/17 - 2019/20)',
     price: 8.00,
-    image: '/patches/premier-league-standard.png',
+    image: '/patches/premier-league-standard-2016-19.png',
+    compatibleLeagues: ['premier-league'],
+    compatibleCompetitions: ['League']
+  },
+  {
+    id: 'premier-league-standard-2019-23',
+    name: 'Premier League Standard Patch 2019/20 - 2022/23',
+    description: 'Official Premier League sleeve patch (2019/20 - 2021/23)',
+    price: 8.00,
+    image: '/patches/premier-league-standard-2019-23.png',
+    compatibleLeagues: ['premier-league'],
+    compatibleCompetitions: ['League']
+  },
+  {
+    id: 'premier-league-standard-2023-26',
+    name: 'Premier League Standard Patch 2023/24 - 2025/26',
+    description: 'Official Premier League sleeve patch (2023/24 - 2025/26)',
+    price: 8.00,
+    image: '/patches/premier-league-standard-2023-26.png',
     compatibleLeagues: ['premier-league'],
     compatibleCompetitions: ['League']
   },

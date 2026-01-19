@@ -193,6 +193,49 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'monaco', seasons: ['2023/24'] },
     ]
   },
+
+  // Premier League Standard Patches
+  'premier-league-standard-2016-19': {
+    allowedClubs: [
+      // All Premier League clubs during these seasons
+      { clubSlug: 'manchester-city', seasons: ['2016/17', '2017/18'] },
+      { clubSlug: 'manchester-united', seasons: ['2016/17', '2017/18', '2018/19', '2019/20'] },
+      { clubSlug: 'liverpool', seasons: ['2016/17', '2017/18', '2018/19', '2019/20'] },
+      { clubSlug: 'chelsea', seasons: ['2016/17', '2018/19', '2019/20'] },
+      { clubSlug: 'arsenal', seasons: ['2016/17', '2017/18', '2018/19', '2019/20'] },
+      { clubSlug: 'tottenham', seasons: ['2016/17', '2017/18', '2018/19', '2019/20'] },
+      { clubSlug: 'newcastle', seasons: ['2016/17', '2017/18', '2018/19', '2019/20'] },
+      // Add other Premier League clubs as needed
+    ]
+  },
+  
+  'premier-league-standard-2019-23': {
+    allowedClubs: [
+      // All Premier League clubs during these seasons
+      { clubSlug: 'manchester-city', seasons: ['2020/21'] },
+      { clubSlug: 'manchester-united', seasons: ['2019/20', '2020/21', '2021/22', '2022/23'] },
+      { clubSlug: 'liverpool', seasons: ['2019/20', '2021/22', '2022/23'] },
+      { clubSlug: 'chelsea', seasons: ['2019/20', '2020/21', '2021/22', '2022/23'] },
+      { clubSlug: 'arsenal', seasons: ['2019/20', '2020/21', '2021/22', '2022/23'] },
+      { clubSlug: 'tottenham', seasons: ['2019/20', '2020/21', '2021/22', '2022/23'] },
+      { clubSlug: 'newcastle', seasons: ['2019/20', '2020/21', '2021/22', '2022/23'] },
+      // Add other Premier League clubs as needed
+    ]
+  },
+  
+  'premier-league-standard-2023-26': {
+    allowedClubs: [
+      // All Premier League clubs during these seasons
+      { clubSlug: 'manchester-city', seasons: ['2025/26'] },
+      { clubSlug: 'manchester-united', seasons: ['2023/24', '2024/25', '2025/26'] },
+      { clubSlug: 'liverpool', seasons: ['2023/24', '2024/25'] },
+      { clubSlug: 'chelsea', seasons: ['2023/24', '2024/25', '2025/26'] },
+      { clubSlug: 'arsenal', seasons: ['2023/24', '2024/25', '2025/26'] },
+      { clubSlug: 'tottenham', seasons: ['2023/24', '2024/25', '2025/26'] },
+      { clubSlug: 'newcastle', seasons: ['2023/24', '2024/25', '2025/26'] },
+      // Add other Premier League clubs as needed
+    ]
+  },
   
   // Premier League Champions Patch
   'premier-league-champions': {
