@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductById } from "@/data/products";
 import { getCompatiblePatches, getPatchById, Patch } from "@/data/patches";
+import { getCompatibleNamesets, getNamesetById, NamesetType } from "@/data/namesets";
 import { getPlayersByTeam, hasAvailablePlayers, Player } from "@/data/players";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -10,7 +11,7 @@ import { Label } from "@/components/ui/label";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { useCurrency } from "@/context/CurrencyContext";
-import { ShoppingCart, Tag, Shirt, CreditCard } from "lucide-react";
+import { ShoppingCart, Tag, Shirt, CreditCard, Type } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -32,6 +33,7 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState<string>(product?.size[0] || "");
   const [selectedPatches, setSelectedPatches] = useState<string[]>([]); // Array of patch IDs
   const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null); // Player ID or null
+  const [selectedNameset, setSelectedNameset] = useState<string | null>(null); // Nameset type ID or null
 
   // Get compatible patches for this product
   // Now includes club and season restrictions
@@ -42,6 +44,18 @@ const ProductDetail = () => {
       product.competition,
       product.team,  // Pass team name for club restrictions
       product.season // Pass season for temporal restrictions
+    );
+  }, [product]);
+
+  // Get compatible namesets for this product
+  // Different fonts for league vs European competitions
+  const availableNamesets = useMemo(() => {
+    if (!product) return [];
+    return getCompatibleNamesets(
+      product.category,
+      product.competition,
+      product.team,
+      product.season
     );
   }, [product]);
 
@@ -264,9 +278,9 @@ const ProductDetail = () => {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <h4 className="font-medium text-base">Official Player Name & Number</h4>
-                    {selectedPlayer && (
+                    {selectedPlayer && selectedPlayer !== "none" && (
                       <Badge variant="new" className="text-xs">
-                        +{formatPrice(20)}
+                        +{formatPrice(20 + (selectedNameset ? (getNamesetById(selectedNameset)?.priceModifier || 0) : 0))}
                       </Badge>
                     )}
                   </div>
@@ -311,8 +325,96 @@ const ProductDetail = () => {
                       </div>
                     )}
                     
+                    {/* Nameset Font Selection - Show if player selected and multiple namesets available */}
+                    {selectedPlayer && selectedPlayer !== "none" && availableNamesets.length > 0 && (
+                      <div className="space-y-3 pt-2 border-t">
+                        <Label className="text-sm font-medium flex items-center gap-2">
+                          <Type className="w-4 h-4" />
+                          Font Style {availableNamesets.length > 1 && '(Choose one)'}
+                        </Label>
+                        
+                        <RadioGroup 
+                          value={selectedNameset || undefined} 
+                          onValueChange={setSelectedNameset}
+                          className="space-y-3"
+                        >
+                          {availableNamesets.map((nameset: NamesetType) => {
+                            const isLeagueFont = nameset.compatibleCompetitions?.includes('League');
+                            const isEuropeanFont = nameset.compatibleCompetitions?.some(comp => 
+                              comp.includes('Champions League') || comp.includes('Europa League')
+                            );
+                            
+                            return (
+                              <div 
+                                key={nameset.id}
+                                className={`flex items-start space-x-3 p-3 border rounded-lg hover:border-brand-orange transition-colors ${
+                                  selectedNameset === nameset.id ? 'border-brand-orange bg-orange-50' : ''
+                                }`}
+                              >
+                                <RadioGroupItem 
+                                  value={nameset.id} 
+                                  id={`nameset-${nameset.id}`}
+                                  className="mt-1"
+                                />
+                                <div className="flex-1">
+                                  <div className="flex items-center justify-between">
+                                    <div>
+                                      <Label 
+                                        htmlFor={`nameset-${nameset.id}`}
+                                        className="text-sm font-medium cursor-pointer flex items-center gap-2"
+                                      >
+                                        {nameset.name}
+                                        {isLeagueFont && (
+                                          <Badge variant="outline" className="text-xs">
+                                            League
+                                          </Badge>
+                                        )}
+                                        {isEuropeanFont && (
+                                          <Badge variant="default" className="text-xs bg-blue-600">
+                                            European
+                                          </Badge>
+                                        )}
+                                      </Label>
+                                      <p className="text-xs text-muted-foreground mt-1">
+                                        {nameset.description}
+                                      </p>
+                                      <p className="text-xs text-gray-500 mt-1">
+                                        Font: {nameset.fontStyle}
+                                      </p>
+                                    </div>
+                                    <div className="text-right ml-4">
+                                      {nameset.priceModifier > 0 ? (
+                                        <Badge variant="new" className="text-xs whitespace-nowrap">
+                                          +{formatPrice(nameset.priceModifier)}
+                                        </Badge>
+                                      ) : (
+                                        <span className="text-xs text-gray-500">Included</span>
+                                      )}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </RadioGroup>
+                        
+                        {!selectedNameset && availableNamesets.length > 1 && (
+                          <p className="text-xs text-amber-600">
+                            ⚠️ Please select a font style
+                          </p>
+                        )}
+                        
+                        {selectedNameset && (
+                          <p className="text-xs text-green-600">
+                            ✓ Font style selected
+                          </p>
+                        )}
+                      </div>
+                    )}
+                    
                     <p className="text-xs text-muted-foreground">
-                      Official player names and numbers are printed using authentic fonts and materials (+€20.00)
+                      Official player names and numbers are printed using authentic fonts and materials. 
+                      {availableNamesets.length > 1 && ' Different fonts are used for league and European competitions.'}
                     </p>
                   </div>
                 </div>

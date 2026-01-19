@@ -41,12 +41,14 @@ Control which fonts/styles are used for player names based on competition:
 - **Club-Specific Fonts**: PSG uses Ligue 1 font domestically, Champions League font in UCL
 - **Season-Based Fonts**: Track font updates and changes over seasons
 - **Automatic Selection**: System chooses correct font based on product's competition
+- **Clear UI Distinction**: Customers see visual badges (League vs European) with different pricing
 
 📚 **Nameset Restrictions Documentation:**
+- [UI Examples](NAMESET_UI_EXAMPLES.md) - Visual guide showing how distinctions appear to customers ⭐
 - [Complete Guide](NAMESET_RESTRICTIONS_GUIDE.md) - Full documentation with examples
 - [Examples & Test Cases](NAMESET_RESTRICTIONS_EXAMPLES.md) - Real-world scenarios (PSG, Marseille)
 
-**Example:** PSG uses Ligue 1 font for domestic league matches but UEFA Champions League font for European matches. The system automatically provides the correct nameset type based on the product's competition.
+**Example:** PSG uses Ligue 1 font for domestic league matches (€20) but UEFA Champions League font for European matches (€25). The system shows both options with clear badges ("League" vs "European") when a product can be used in both competitions.
 
 ## Project info
 

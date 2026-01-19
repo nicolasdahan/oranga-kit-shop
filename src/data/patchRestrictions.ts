@@ -68,6 +68,7 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'manchester-united', seasons: ['2021/22', '2022/23', '2023/24'] },
       { clubSlug: 'newcastle', seasons: ['2021/22', '2022/23', '2023/24'] },
       { clubSlug: 'liverpool', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'chelsea', seasons: ['2021/22', '2022/23', '2023/24'] },
       
       // La Liga
       { clubSlug: 'real-madrid', seasons: ['2021/22', '2022/23', '2023/24'] },
@@ -99,6 +100,7 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'manchester-united', seasons: ['2024/25'] },
       { clubSlug: 'newcastle', seasons: ['2024/25'] },
       { clubSlug: 'liverpool', seasons: ['2024/25'] },
+      { clubSlug: 'chelsea', seasons: ['2024/25'] },
       // La Liga
       { clubSlug: 'real-madrid', seasons: ['2024/25'] },
       { clubSlug: 'barcelona', seasons: ['2024/25'] },
@@ -123,11 +125,11 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       // Only clubs that have won the Champions League can wear this
       { clubSlug: 'manchester-city', seasons: ['2023/24'] }, // Won 2023
       { clubSlug: 'manchester-city', seasons: ['2025/26'] }, 
-      { clubSlug: 'chelsea', seasons: '*' }, // Won 2021
-      { clubSlug: 'liverpool', seasons: '*' }, // Won 2019
-      { clubSlug: 'real-madrid', seasons: '*' }, 
-      { clubSlug: 'barcelona', seasons: '*' }, 
-      { clubSlug: 'inter-milan', seasons: '*' },
+      { clubSlug: 'chelsea', seasons: ['2011/12', '2020/21'] }, // Won 2021
+      { clubSlug: 'liverpool', seasons: ['2018/19'] }, // Won 2019
+      { clubSlug: 'real-madrid', seasons: ['2013/14', '2015/16', '2016/17', '2017/18', '2021/22', '2023/24'] }, 
+      { clubSlug: 'barcelona', seasons: ['2008/09', '2010/11', '2014/15'] }, 
+      { clubSlug: 'inter-milan', seasons: ['2009/10'] },
       { clubSlug: 'ac-milan', seasons: '*' },
       { clubSlug: 'bayern-munich', seasons: '*' },
       { clubSlug: 'marseille', seasons: ['1992/93'] }, // Won 1993
