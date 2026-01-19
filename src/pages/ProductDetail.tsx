@@ -34,9 +34,15 @@ const ProductDetail = () => {
   const [selectedPlayer, setSelectedPlayer] = useState<string | null>(null); // Player ID or null
 
   // Get compatible patches for this product
+  // Now includes club and season restrictions
   const availablePatches = useMemo(() => {
     if (!product) return [];
-    return getCompatiblePatches(product.category, product.competition);
+    return getCompatiblePatches(
+      product.category, 
+      product.competition,
+      product.team,  // Pass team name for club restrictions
+      product.season // Pass season for temporal restrictions
+    );
   }, [product]);
 
   // Get available players for this team

@@ -1,3 +1,5 @@
+import { isPatchAllowedForClub, getClubSlugFromTeamName } from './patchRestrictions';
+
 export type Patch = {
   id: string;
   name: string;
@@ -6,6 +8,8 @@ export type Patch = {
   image: string;
   compatibleLeagues: string[]; // league slugs or competition names
   compatibleCompetitions?: string[]; // Champions League, Europa League, etc.
+  // Note: Restrictions are managed separately in patchRestrictions.ts
+  // to control which clubs can use this patch in which seasons
 };
 
 export const patches: Patch[] = [
@@ -99,7 +103,7 @@ export const patches: Patch[] = [
     compatibleLeagues: ['ligue-1'],
     compatibleCompetitions: ['League']
   },
-  {
+  /*{
     id: 'ligue-1-champions',
     name: 'Ligue 1 Champions Patch',
     description: 'French champions badge',
@@ -107,7 +111,7 @@ export const patches: Patch[] = [
     image: '/patches/ligue-1-champions.png',
     compatibleLeagues: ['ligue-1'],
     compatibleCompetitions: ['League']
-  },
+  },*/
 
   // European Competition Patches
   {
@@ -169,8 +173,15 @@ export const patches: Patch[] = [
 ];
 
 // Helper function to get patches compatible with a product
-export const getCompatiblePatches = (category: string, competitions: string[]): Patch[] => {
-  return patches.filter(patch => {
+// Now supports club and season restrictions
+export const getCompatiblePatches = (
+  category: string, 
+  competitions: string[], 
+  teamName?: string, 
+  season?: string
+): Patch[] => {
+  // First filter by league and competition compatibility
+  const basicCompatiblePatches = patches.filter(patch => {
     // Check if patch is compatible with the product's category/league
     const leagueMatch = patch.compatibleLeagues.includes(category);
     
@@ -181,6 +192,18 @@ export const getCompatiblePatches = (category: string, competitions: string[]): 
     
     return leagueMatch && competitionMatch;
   });
+  
+  // If no team or season info provided, return basic compatible patches
+  if (!teamName || !season) {
+    return basicCompatiblePatches;
+  }
+  
+  // Filter by club and season restrictions
+  const clubSlug = getClubSlugFromTeamName(teamName);
+  
+  return basicCompatiblePatches.filter(patch => 
+    isPatchAllowedForClub(patch.id, clubSlug, season)
+  );
 };
 
 export const getPatchById = (id: string): Patch | undefined => {

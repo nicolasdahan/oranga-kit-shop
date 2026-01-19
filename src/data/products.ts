@@ -267,7 +267,7 @@ const defaultProducts: Product[] = [
     id: "psg-home-2025",
     name: "Paris Saint-Germain Pro Home Shirt 2024/25",
     description: "Official Paris Saint-Germain professional home shirt for the 2024/25 season. Features advanced performance fabric with the iconic PSG crest.",
-    price: 139.99,
+    price: 150.00,
     images: ["/products/shirts/psg-pro-home-2025.jpg"],
     category: "ligue-1",
     team: "Paris Saint-Germain",

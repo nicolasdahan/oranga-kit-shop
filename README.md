@@ -1,4 +1,19 @@
-# Welcome to your Lovable project
+# Oranga Kit Shop - Football Jersey E-commerce
+
+A modern e-commerce platform for buying authentic football jerseys with professional customization options.
+
+## 🆕 New Feature: Dynamic Product Customization
+
+The shop now features a completely redesigned customization system:
+
+- **Dynamic Patch Selection**: Product-specific patches with individual pricing
+- **Official Player Names**: Select from real team rosters instead of free-text
+- **Smart Filtering**: Automatic compatibility based on league and team
+
+📚 **Documentation:**
+- [Quick Start Guide](QUICK_START_CUSTOMIZATION.md) - Get started in 5 minutes
+- [Full System Documentation](CUSTOMIZATION_SYSTEM.md) - Complete technical details
+- [Implementation Summary](IMPLEMENTATION_SUMMARY.md) - What changed and why
 
 ## Project info
 
