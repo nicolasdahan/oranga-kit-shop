@@ -12,9 +12,15 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const translations = {
   en: {
+    // Top Banner
+    'banner.worldwideShipping': '🌍 Worldwide Shipping Available',
+    'banner.authenticProducts': '✓ 100% Authentic Products',
+    'banner.freeShipping': '📦 Free Shipping on Orders Over €100',
+
     // Navbar
     'nav.home': 'Home',
     'nav.newArrivals': 'New Arrivals',
+    'nav.shirts': 'Shirts',
     'nav.clubs': 'Clubs',
     'nav.nationalTeams': 'National Teams',
     'nav.scarves': 'Scarves',
@@ -186,9 +192,15 @@ const translations = {
 
   },
   fr: {
+    // Top Banner
+    'banner.worldwideShipping': '🌍 Livraison Internationale Disponible',
+    'banner.authenticProducts': '✓ Produits 100% Authentiques',
+    'banner.freeShipping': '📦 Livraison Gratuite dès 100€',
+
     // Navbar
     'nav.home': 'Accueil',
     'nav.newArrivals': 'Nouveautés',
+    'nav.shirts': 'Maillots',
     'nav.clubs': 'Clubs',
     'nav.nationalTeams': 'Sélection nationales',
     'nav.scarves': 'Écharpes',
@@ -325,9 +337,15 @@ const translations = {
     'user.menu.register': 'Créer un compte',
   },
   es: {
+    // Top Banner
+    'banner.worldwideShipping': '🌍 Envío Mundial Disponible',
+    'banner.authenticProducts': '✓ Productos 100% Auténticos',
+    'banner.freeShipping': '📦 Envío Gratis en Pedidos Superiores a 100€',
+
     // Navbar
     'nav.home': 'Inicio',
     'nav.newArrivals': 'Novedades',
+    'nav.shirts': 'Camisetas',
     'nav.clubs': 'Clubes',
     'nav.nationalTeams': 'Selecciones Nacionales',
     'nav.scarves': 'Bufandas',

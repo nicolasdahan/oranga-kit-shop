@@ -41,11 +41,8 @@ const Navbar = () => {
           <Link to="/catalog?filter=new" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
             {t('nav.newArrivals')}
           </Link>
-          <Link to="/catalog?category=clubs" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
-            {t('nav.clubs')}
-          </Link>
-          <Link to="/catalog?category=national-teams" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
-            {t('nav.nationalTeams')}
+          <Link to="/catalog" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
+            {t('nav.shirts')}
           </Link>
           <Link to="/scarves" className="text-sm font-medium text-white hover:text-white/80 transition-all duration-300 hover-lift">
             {t('nav.scarves')}
