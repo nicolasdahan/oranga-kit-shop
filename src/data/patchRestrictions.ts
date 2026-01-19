@@ -154,7 +154,7 @@ export const patchRestrictions: PatchRestrictionsConfig = {
   'ucl-winners-15': {
     allowedClubs: [
       // Only clubs that have won the Champions League can wear this
-      { clubSlug: 'real', seasons: ['2025/26'] }, // Won 2025
+      { clubSlug: 'real-madrid', seasons: ['2025/26'] }, // Won 2025
     ]
   },
   
