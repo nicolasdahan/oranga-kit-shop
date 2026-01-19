@@ -29,37 +29,94 @@ export type PatchRestrictionsConfig = {
 
 export const patchRestrictions: PatchRestrictionsConfig = {
   // UEFA Champions League Standard Patch
-  'ucl-standard': {
+  'ucl-standard-2012-2021': {
     allowedClubs: [
       // Premier League - 2023/24 season
-      { clubSlug: 'manchester-city', seasons: ['2023/24', '2024/25'] },
-      { clubSlug: 'arsenal', seasons: ['2023/24', '2024/25'] },
-      { clubSlug: 'manchester-united', seasons: ['2023/24'] },
-      { clubSlug: 'newcastle', seasons: ['2023/24'] },
-      { clubSlug: 'liverpool', seasons: ['2023/24'] },
+      { clubSlug: 'manchester-city', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'arsenal', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'manchester-united', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'newcastle', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'liverpool', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
       
       // La Liga
-      { clubSlug: 'real-madrid', seasons: ['2023/24', '2024/25'] },
-      { clubSlug: 'barcelona', seasons: ['2023/24', '2024/25'] },
-      { clubSlug: 'atletico-madrid', seasons: ['2023/24', '2024/25'] },
+      { clubSlug: 'real-madrid', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'barcelona', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21', '2021/22', '2022/23', '2023/24', '20    24/25'] },
+      { clubSlug: 'atletico-madrid', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
       
       // Serie A
-      { clubSlug: 'inter-milan', seasons: ['2023/24', '2024/25'] },
-      { clubSlug: 'ac-milan', seasons: ['2023/24'] },
-      { clubSlug: 'napoli', seasons: ['2023/24'] },
-      { clubSlug: 'juventus', seasons: ['2023/24'] },
+      { clubSlug: 'inter-milan', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'ac-milan', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'napoli', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'juventus', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
       
       // Bundesliga
-      { clubSlug: 'bayern-munich', seasons: ['2023/24', '2024/25'] },
-      { clubSlug: 'borussia-dortmund', seasons: ['2023/24', '2024/25'] },
-      { clubSlug: 'rb-leipzig', seasons: ['2023/24'] },
+      { clubSlug: 'bayern-munich', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'borussia-dortmund', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'rb-leipzig', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
       
       // Ligue 1 - Marseille example: Champions League in 2023/24 but NOT in 2024/25
-      { clubSlug: 'psg', seasons: ['2020/21', '2021/22', '2022/23', '2023/24', '2024/25'] },
-      { clubSlug: 'marseille', seasons: ['2023/24'] }, // Only 2023/24, not 2024/25
+      { clubSlug: 'psg', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] },
+      { clubSlug: 'marseille', seasons: ['2012/13', '2013/14', '2014/15', '2015/16', '2016/17', '2017/18', '2018/19', '2019/20', '2020/21'] }, // Only 2023/24, not 2024/25
     ]
   },
-  
+
+  'ucl-standard-2021-2024': {
+    allowedClubs: [
+      // Premier League - 2023/24 season
+      { clubSlug: 'manchester-city', seasons: ['2021/22', '2022/23', '2023/24',] },
+      { clubSlug: 'arsenal', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'manchester-united', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'newcastle', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'liverpool', seasons: ['2021/22', '2022/23', '2023/24'] },
+      
+      // La Liga
+      { clubSlug: 'real-madrid', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'barcelona', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'atletico-madrid', seasons: ['2021/22', '2022/23', '2023/24'] },
+      
+      // Serie A
+      { clubSlug: 'inter-milan', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'ac-milan', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'napoli', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'juventus', seasons: ['2021/22', '2022/23', '2023/24'] },
+      
+      // Bundesliga
+      { clubSlug: 'bayern-munich', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'borussia-dortmund', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'rb-leipzig', seasons: ['2021/22', '2022/23', '2023/24'] },
+      
+      // Ligue 1 - Marseille example: Champions League in 2023/24 but NOT in 2024/25
+      { clubSlug: 'psg', seasons: ['2021/22', '2022/23', '2023/24'] },
+      { clubSlug: 'marseille', seasons: ['2021/22', '2022/23', '2023/24'] }, // Only 2023/24, not 2024/25
+    ]
+  },
+
+  'ucl-standard-2024-2025': {
+    allowedClubs: [
+      // Premier League - 2023/24 season
+      { clubSlug: 'manchester-city', seasons: ['2024/25'] },
+      { clubSlug: 'arsenal', seasons: ['2024/25'] },
+      { clubSlug: 'manchester-united', seasons: ['2024/25'] },
+      { clubSlug: 'newcastle', seasons: ['2024/25'] },
+      { clubSlug: 'liverpool', seasons: ['2024/25'] },
+      // La Liga
+      { clubSlug: 'real-madrid', seasons: ['2024/25'] },
+      { clubSlug: 'barcelona', seasons: ['2024/25'] },
+      { clubSlug: 'atletico-madrid', seasons: ['2024/25'] },
+      // Serie A
+      { clubSlug: 'inter-milan', seasons: ['2024/25'] },
+      { clubSlug: 'ac-milan', seasons: ['2024/25'] },
+      { clubSlug: 'napoli', seasons: ['2024/25'] },
+      { clubSlug: 'juventus', seasons: ['2024/25'] },
+      // Bundesliga
+      { clubSlug: 'bayern-munich', seasons: ['2024/25'] },
+      { clubSlug: 'borussia-dortmund', seasons: ['2024/25'] },
+      { clubSlug: 'rb-leipzig', seasons: ['2024/25'] },
+      // Ligue 1
+      { clubSlug: 'psg', seasons: ['2024/25'] },
+      { clubSlug: 'marseille', seasons: ['2024/25'] },
+    ]
+  },
   // UEFA Champions League Winners Badge
   'ucl-winners': {
     allowedClubs: [

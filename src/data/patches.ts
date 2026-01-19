@@ -115,11 +115,29 @@ export const patches: Patch[] = [
 
   // European Competition Patches
   {
-    id: 'ucl-standard',
-    name: 'UEFA Champions League Patch',
-    description: 'Official UEFA Champions League sleeve badge',
+    id: 'ucl-standard-2012-2021',
+    name: 'UEFA Champions League Patch and Respect Patch',
+    description: 'Official UEFA Champions League sleeve badge with Respect Patch',
     price: 10.00,
-    image: '/patches/ucl-standard.png',
+    image: '/patches/ucl-standard-2012-2021.png',
+    compatibleLeagues: ['premier-league', 'la-liga', 'serie-a', 'bundesliga', 'ligue-1'],
+    compatibleCompetitions: ['Champions League']
+  },
+  {
+    id: 'ucl-standard-2021-2024',
+    name: 'UEFA Champions League Patch and Foundation Patch',
+    description: 'Official UEFA Champions League sleeve badge with Foundation Patch',
+    price: 10.00,
+    image: '/patches/ucl-standard-2021-2024.png',
+    compatibleLeagues: ['premier-league', 'la-liga', 'serie-a', 'bundesliga', 'ligue-1'],
+    compatibleCompetitions: ['Champions League']
+  },
+  {
+    id: 'ucl-standard-2024-2025',
+    name: 'UEFA Champions League Patch and Foundation Patch',
+    description: 'Official UEFA Champions League sleeve badge with Foundation Patch',
+    price: 10.00,
+    image: '/patches/ucl-standard-2024-2025.png',
     compatibleLeagues: ['premier-league', 'la-liga', 'serie-a', 'bundesliga', 'ligue-1'],
     compatibleCompetitions: ['Champions League']
   },
