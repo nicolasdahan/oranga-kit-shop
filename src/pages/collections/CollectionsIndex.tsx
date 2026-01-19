@@ -107,3 +107,5 @@ const CollectionsIndex = () => {
 
 export default CollectionsIndex;
 
+
+

@@ -274,3 +274,5 @@ Your homepage now has a **professional "Shop by Club" section** with:
 
 **Ready to test!** Visit http://localhost:5173/ and see your club logos! 🎯
 
+
+
