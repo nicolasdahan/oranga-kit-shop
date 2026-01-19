@@ -2,18 +2,36 @@
 
 A modern e-commerce platform for buying authentic football jerseys with professional customization options.
 
-## 🆕 New Feature: Dynamic Product Customization
+## 🆕 New Features
 
-The shop now features a completely redesigned customization system:
+### Dynamic Product Customization
+
+The shop features a completely redesigned customization system:
 
 - **Dynamic Patch Selection**: Product-specific patches with individual pricing
 - **Official Player Names**: Select from real team rosters instead of free-text
 - **Smart Filtering**: Automatic compatibility based on league and team
 
-📚 **Documentation:**
+📚 **Customization Documentation:**
 - [Quick Start Guide](QUICK_START_CUSTOMIZATION.md) - Get started in 5 minutes
 - [Full System Documentation](CUSTOMIZATION_SYSTEM.md) - Complete technical details
 - [Implementation Summary](IMPLEMENTATION_SUMMARY.md) - What changed and why
+
+### Patch Restrictions System (NEW!)
+
+Control which patches appear for which clubs in which seasons:
+
+- **Season-Based Restrictions**: Champions League in 2023/24, Europa League in 2024/25
+- **Club-Specific Rules**: Each club has accurate patch availability
+- **Historical Badges**: Support for all-time achievements (e.g., Marseille 1993 CL winners)
+
+📚 **Patch Restrictions Documentation:**
+- [Quick Start Guide](QUICK_START_PATCH_RESTRICTIONS.md) - Add restrictions in 5 minutes
+- [Examples & Test Cases](PATCH_RESTRICTIONS_EXAMPLES.md) - Real-world scenarios (Marseille, etc.)
+- [Full Configuration Guide](PATCH_RESTRICTIONS_GUIDE.md) - Complete documentation
+- [Implementation Summary](PATCH_RESTRICTIONS_SUMMARY.md) - Technical overview
+
+**Example:** Marseille qualified for Champions League in 2023/24 but Europa League in 2024/25. The system automatically shows the correct patches based on the product's season.
 
 ## Project info
 

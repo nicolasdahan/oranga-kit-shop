@@ -64,7 +64,7 @@ export const patchRestrictions: PatchRestrictionsConfig = {
   'ucl-winners': {
     allowedClubs: [
       // Only clubs that have won the Champions League can wear this
-      { clubSlug: 'manchester-city', seasons: ['2023/24', '2024/25'] }, // Won 2023
+      { clubSlug: 'manchester-city', seasons: ['2023/24'] }, // Won 2023
       { clubSlug: 'chelsea', seasons: '*' }, // Won 2021
       { clubSlug: 'liverpool', seasons: '*' }, // Won 2019
       { clubSlug: 'real-madrid', seasons: '*' }, // Multiple wins, most recent 2022
@@ -147,10 +147,10 @@ export const patchRestrictions: PatchRestrictionsConfig = {
   // Ligue 1 Champions Patch (currently commented out in patches.ts)
   'ligue-1-champions': {
     allowedClubs: [
-      { clubSlug: 'psg', seasons: ['2023/24', '2024/25', '2022/23', '2021/22', '2020/21'] }, // Dominant run
+      /*{ clubSlug: 'psg', seasons: ['2023/24', '2024/25', '2022/23', '2021/22', '2020/21'] }, // Dominant run
       { clubSlug: 'lille', seasons: ['2021/22'] }, // Won 2021
       { clubSlug: 'monaco', seasons: ['2017/18'] }, // Won 2017
-      { clubSlug: 'marseille', seasons: ['2010/11'] }, // Won 2010
+      { clubSlug: 'marseille', seasons: ['2010/11'] }, // Won 2010 */
     ]
   },
 };

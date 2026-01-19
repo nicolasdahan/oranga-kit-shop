@@ -213,7 +213,7 @@ const defaultProducts: Product[] = [
     inStock: true,
     featured: false,
     brand: "Puma",
-    competition: ["League"],
+    competition: ["League", "Champions League"], // Marseille qualified for UCL in 2023/24
     kitType: "Home",
     condition: "New",
     hasNameset: false,
@@ -234,7 +234,7 @@ const defaultProducts: Product[] = [
     inStock: true,
     featured: false,
     brand: "Puma",
-    competition: ["League"],
+    competition: ["League", "Champions League"], // Marseille qualified for UCL in 2023/24
     kitType: "Away",
     condition: "New",
     hasNameset: false,
@@ -255,7 +255,7 @@ const defaultProducts: Product[] = [
     inStock: true,
     featured: false,
     brand: "Puma",
-    competition: ["League"],
+    competition: ["League", "Europa League"], // Marseille in Europa League in 2024/25
     kitType: "Third",
     condition: "New",
     hasNameset: false,
