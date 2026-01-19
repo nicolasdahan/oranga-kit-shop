@@ -157,6 +157,15 @@ export const patches: Patch[] = [
     compatibleLeagues: ['ligue-1'],
     compatibleCompetitions: ['League']
   },
+  {
+    id: '1team-2025-26',
+    name: 'Ligue 1 Standard Patch 2025/26',
+    description: 'Official Ligue 1 sleeve patch (2025/26)',
+    price: 2.00,
+    image: '/patches/1team-2025-26.png',
+    compatibleLeagues: ['ligue-1'],
+    compatibleCompetitions: ['League']
+  },
   
   /*{
     id: 'ligue-1-champions',

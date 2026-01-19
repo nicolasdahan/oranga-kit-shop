@@ -334,6 +334,15 @@ export const patchRestrictions: PatchRestrictionsConfig = {
         { clubSlug: 'monaco', seasons: ['2024/25', '2025/26'] },
       ]
     },
+
+    '1team-2025-26': {
+      allowedClubs: [
+        { clubSlug: 'psg', seasons: ['2025/26'] },
+        { clubSlug: 'lyon', seasons: ['2025/26'] },
+        { clubSlug: 'marseille', seasons: ['2025/26'] },
+        { clubSlug: 'monaco', seasons: ['2025/26'] },
+      ]
+    },
       
     // FIFA World Cup Patch
    'world-cup-standard': {
