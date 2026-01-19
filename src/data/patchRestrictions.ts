@@ -55,7 +55,7 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'rb-leipzig', seasons: ['2023/24'] },
       
       // Ligue 1 - Marseille example: Champions League in 2023/24 but NOT in 2024/25
-      { clubSlug: 'psg', seasons: ['2023/24', '2024/25'] },
+      { clubSlug: 'psg', seasons: ['2020/21', '2021/22', '2022/23', '2023/24', '2024/25'] },
       { clubSlug: 'marseille', seasons: ['2023/24'] }, // Only 2023/24, not 2024/25
     ]
   },
@@ -65,6 +65,7 @@ export const patchRestrictions: PatchRestrictionsConfig = {
     allowedClubs: [
       // Only clubs that have won the Champions League can wear this
       { clubSlug: 'manchester-city', seasons: ['2023/24'] }, // Won 2023
+      { clubSlug: 'manchester-city', seasons: ['2025/26'] }, 
       { clubSlug: 'chelsea', seasons: '*' }, // Won 2021
       { clubSlug: 'liverpool', seasons: '*' }, // Won 2019
       { clubSlug: 'real-madrid', seasons: '*' }, // Multiple wins, most recent 2022
@@ -101,6 +102,7 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'rb-leipzig', seasons: ['2024/25'] },
       
       // Ligue 1
+      { clubSlug: 'marseille', seasons: ['2024/25'] }
       { clubSlug: 'marseille', seasons: ['2024/25'] }, // Europa League in 2024/25 instead of CL
       { clubSlug: 'lyon', seasons: ['2023/24', '2024/25'] },
       { clubSlug: 'monaco', seasons: ['2023/24'] },
@@ -159,7 +161,7 @@ export const patchRestrictions: PatchRestrictionsConfig = {
     allowedClubs: [
     
         // Ligue 1 clubs
-        { clubSlug: 'psg', seasons: ['2017', '2022'] },
+        { clubSlug: 'psg', seasons: ['2016/17', '2021/22'] },
         { clubSlug: 'lyon', seasons: '*' },
         { clubSlug: 'marseille', seasons: '*' },
         { clubSlug: 'monaco', seasons: '*' },
