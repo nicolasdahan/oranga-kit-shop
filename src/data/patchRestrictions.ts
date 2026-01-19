@@ -126,19 +126,14 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'arsenal', seasons: ['2025/26'] },
       { clubSlug: 'manchester-united', seasons: ['2025/26'] },
       { clubSlug: 'newcastle', seasons: ['2025/26'] },
-      { clubSlug: 'liverpool', seasons: ['2025/26'] },
       { clubSlug: 'chelsea', seasons: ['2025/26'] },
     // La Liga
-    { clubSlug: 'real-madrid', seasons: ['2025/26'] },
-    { clubSlug: 'barcelona', seasons: ['2025/26'] },
     { clubSlug: 'atletico-madrid', seasons: ['2025/26'] },
     // Serie A
     { clubSlug: 'inter-milan', seasons: ['2025/26'] },
-    { clubSlug: 'ac-milan', seasons: ['2025/26'] },
     { clubSlug: 'napoli', seasons: ['2025/26'] },
     { clubSlug: 'juventus', seasons: ['2025/26'] },
     // Bundesliga
-    { clubSlug: 'bayern-munich', seasons: ['2025/26'] },
     { clubSlug: 'borussia-dortmund', seasons: ['2025/26'] },
     { clubSlug: 'rb-leipzig', seasons: ['2025/26'] },
     // Ligue 1
