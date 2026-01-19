@@ -103,6 +103,53 @@ export const patches: Patch[] = [
     compatibleLeagues: ['ligue-1'],
     compatibleCompetitions: ['League']
   },
+
+  {
+    id: 'ligue-1-standard-2017-19',
+    name: 'Ligue 1 Standard Patch 2017-19',
+    description: 'Official Ligue 1 sleeve patch (2017/18 - 2018/19)',
+    price: 8.00,
+    image: '/patches/ligue-1-standard-2017-19.png',
+    compatibleLeagues: ['ligue-1'],
+    compatibleCompetitions: ['League']
+  },
+  {
+    id: 'ligue-1-standard-2020-22',
+    name: 'Ligue 1 Standard Patch 2020-22',
+    description: 'Official Ligue 1 sleeve patch (2020/21 - 2021/22)',
+    price: 8.00,
+    image: '/patches/ligue-1-standard-2020-22.png',
+    compatibleLeagues: ['ligue-1'],
+    compatibleCompetitions: ['League']
+  },
+  {
+    id: 'ligue-1-standard-2022-23',
+    name: 'Ligue 1 Standard Patch 2022-23',
+    description: 'Official Ligue 1 sleeve patch (2022/23)',
+    price: 8.00,
+    image: '/patches/ligue-1-standard-2022-23.png',
+    compatibleLeagues: ['ligue-1'],
+    compatibleCompetitions: ['League']
+  },
+  {
+    id: 'ligue-1-standard-2023-24',
+    name: 'Ligue 1 Standard Patch 2023-24',
+    description: 'Official Ligue 1 sleeve patch (2023/24)',
+    price: 8.00,
+    image: '/patches/ligue-1-standard-2023-24.png',
+    compatibleLeagues: ['ligue-1'],
+    compatibleCompetitions: ['League']
+  },
+  {
+    id: 'ligue-1-standard-2024-26',
+    name: 'Ligue 1 Standard Patch 2024-26',
+    description: 'Official Ligue 1 sleeve patch (2024/25 - 2025/26)',
+    price: 8.00,
+    image: '/patches/ligue-1-standard-2024-26.png',
+    compatibleLeagues: ['ligue-1'],
+    compatibleCompetitions: ['League']
+  },
+  
   /*{
     id: 'ligue-1-champions',
     name: 'Ligue 1 Champions Patch',
@@ -138,6 +185,15 @@ export const patches: Patch[] = [
     description: 'Official UEFA Champions League sleeve badge with Foundation Patch',
     price: 10.00,
     image: '/patches/ucl-standard-2024-2025.png',
+    compatibleLeagues: ['premier-league', 'la-liga', 'serie-a', 'bundesliga', 'ligue-1'],
+    compatibleCompetitions: ['Champions League']
+  },
+  {
+    id: 'ucl-standard-2025-2026',
+    name: 'UEFA Champions League Patch and Foundation Patch',
+    description: 'Official UEFA Champions League sleeve badge with Foundation Patch',
+    price: 10.00,
+    image: '/patches/ucl-standard-2025-2026.png',
     compatibleLeagues: ['premier-league', 'la-liga', 'serie-a', 'bundesliga', 'ligue-1'],
     compatibleCompetitions: ['Champions League']
   },

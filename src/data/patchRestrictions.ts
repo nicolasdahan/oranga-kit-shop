@@ -119,6 +119,33 @@ export const patchRestrictions: PatchRestrictionsConfig = {
       { clubSlug: 'marseille', seasons: ['2024/25'] },
     ]
   },
+  'ucl-standard-2025-2026': {
+    allowedClubs: [
+      // Premier League - 2023/24 season
+      { clubSlug: 'manchester-city', seasons: ['2025/26'] },
+      { clubSlug: 'arsenal', seasons: ['2025/26'] },
+      { clubSlug: 'manchester-united', seasons: ['2025/26'] },
+      { clubSlug: 'newcastle', seasons: ['2025/26'] },
+      { clubSlug: 'liverpool', seasons: ['2025/26'] },
+      { clubSlug: 'chelsea', seasons: ['2025/26'] },
+    // La Liga
+    { clubSlug: 'real-madrid', seasons: ['2025/26'] },
+    { clubSlug: 'barcelona', seasons: ['2025/26'] },
+    { clubSlug: 'atletico-madrid', seasons: ['2025/26'] },
+    // Serie A
+    { clubSlug: 'inter-milan', seasons: ['2025/26'] },
+    { clubSlug: 'ac-milan', seasons: ['2025/26'] },
+    { clubSlug: 'napoli', seasons: ['2025/26'] },
+    { clubSlug: 'juventus', seasons: ['2025/26'] },
+    // Bundesliga
+    { clubSlug: 'bayern-munich', seasons: ['2025/26'] },
+    { clubSlug: 'borussia-dortmund', seasons: ['2025/26'] },
+    { clubSlug: 'rb-leipzig', seasons: ['2025/26'] },
+    // Ligue 1
+    { clubSlug: 'marseille', seasons: ['2025/26'] },
+    ]
+  },    
+  
   // UEFA Champions League Winners Badge
   'ucl-winners': {
     allowedClubs: [
@@ -215,15 +242,54 @@ export const patchRestrictions: PatchRestrictionsConfig = {
   },
 
 // Ligue 1 Standard Patch
-  'ligue-1-standard': {
-    allowedClubs: [
-    
-        // Ligue 1 clubs
-        { clubSlug: 'psg', seasons: ['2016/17', '2021/22'] },
-        { clubSlug: 'lyon', seasons: '*' },
-        { clubSlug: 'marseille', seasons: '*' },
-        { clubSlug: 'monaco', seasons: '*' },
-    ]
+    // Ligue 1 Standard Patch - 2017/18 and 2018/19
+    'ligue-1-standard-2017-19': {
+      allowedClubs: [
+        // { clubSlug: 'psg', seasons: ['2017/18', '2018/19'] },
+        { clubSlug: 'lyon', seasons: ['2017/18', '2018/19'] },
+        { clubSlug: 'marseille', seasons: ['2017/18', '2018/19'] },
+        { clubSlug: 'monaco', seasons: ['2017/18', '2018/19'] },
+      ]
+    },
+
+    // Ligue 1 Standard Patch - 2020/21 and 2021/22
+    'ligue-1-standard-2020-22': {
+      allowedClubs: [
+        { clubSlug: 'psg', seasons: ['2021/22'] },
+        { clubSlug: 'lyon', seasons: ['2020/21', '2021/22'] },
+        { clubSlug: 'marseille', seasons: ['2020/21', '2021/22'] },
+        { clubSlug: 'monaco', seasons: ['2020/21', '2021/22'] },
+      ]
+    },
+
+    // Ligue 1 Standard Patch - 2022/23
+    'ligue-1-standard-2022-23': {
+      allowedClubs: [
+        //{ clubSlug: 'psg', seasons: ['2022/23'] },
+        { clubSlug: 'lyon', seasons: ['2022/23'] },
+        { clubSlug: 'marseille', seasons: ['2022/23'] },
+        { clubSlug: 'monaco', seasons: ['2022/23'] },
+      ]
+    },
+
+    // Ligue 1 Standard Patch - 2023/24
+    'ligue-1-standard-2023-24': {
+      allowedClubs: [
+        //{ clubSlug: 'psg', seasons: ['2023/24'] },
+        { clubSlug: 'lyon', seasons: ['2023/24'] },
+        { clubSlug: 'marseille', seasons: ['2023/24'] },
+        { clubSlug: 'monaco', seasons: ['2023/24'] },
+      ]
+    },
+
+    // Ligue 1 Standard Patch - 2024/25 and 2025/26
+    'ligue-1-standard-2024-26': {
+      allowedClubs: [
+        //{ clubSlug: 'psg', seasons: ['2024/25', '2025/26'] },
+        { clubSlug: 'lyon', seasons: ['2024/25', '2025/26'] },
+        { clubSlug: 'marseille', seasons: ['2024/25', '2025/26'] },
+        { clubSlug: 'monaco', seasons: ['2024/25', '2025/26'] },
+      ]
     },
       
     // FIFA World Cup Patch
