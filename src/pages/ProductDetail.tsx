@@ -458,7 +458,7 @@ const ProductDetail = () => {
               <img 
                 src="/payment_logo/PayPal-Yellow-Payment-Button.png" 
                 alt="PayPal Checkout"
-                className="h-full w-auto max-w-full object-contain scale-150"
+                className="h-full w-auto max-w-full object-contain scale-250"
               />
             </Button>
           </div>
