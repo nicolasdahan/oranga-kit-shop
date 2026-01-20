@@ -57,7 +57,7 @@ export const players: Player[] = [
     number: 99,
     position: 'Goalkeeper',
     team: 'Paris Saint-Germain',
-    available: true
+    available: false
   },
 
   // Real Madrid Players
