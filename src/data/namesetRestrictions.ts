@@ -79,7 +79,7 @@ export const namesetRestrictions: NamesetRestrictionsConfig = {
       
       // Ligue 1
       // PSG: Uses UCL font when playing Champions League
-      { clubSlug: 'psg', seasons: ['2021/22', '2022/23', '2023/24', '2024/25'] },
+      { clubSlug: 'psg', seasons: ['2021/22', '2022/23', '2023/24', '2024/25', '2025/26'] },
       // Marseille: UCL font in 2023/24 when they qualified for Champions League
       { clubSlug: 'marseille', seasons: ['2023/24'] },
     ]
