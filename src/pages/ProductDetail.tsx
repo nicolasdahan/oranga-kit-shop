@@ -451,14 +451,14 @@ const ProductDetail = () => {
             </div>
             <Button
               onClick={handlePaypalCheckout}
-              className="w-full bg-[#FFC439] hover:bg-[#F7B600] border-0 px-4 py-2 h-11 overflow-hidden"
+              className="w-full bg-[#FFC439] hover:bg-[#F7B600] border-0 px-2 py-1 h-11 overflow-hidden"
               size="lg"
               disabled={!selectedSize}
             >
               <img 
                 src="/payment_logo/PayPal-Yellow-Payment-Button.png" 
                 alt="PayPal Checkout"
-                className="h-full w-auto max-w-full object-contain"
+                className="h-full w-auto max-w-full object-contain scale-150"
               />
             </Button>
           </div>
