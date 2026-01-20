@@ -43,13 +43,13 @@ Replaced the text-based "Quick Checkout with PayPal" button with the official Pa
 ```tsx
 <button
   onClick={handlePaypalCheckout}
-  className="w-full transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+  className="w-full flex items-center justify-center transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed h-11"
   disabled={!selectedSize}
 >
   <img 
     src="/payment_logo/PayPal-Yellow-Payment-Button.png" 
     alt="PayPal Checkout"
-    className="w-full h-auto"
+    className="h-full w-auto max-w-full object-contain"
   />
 </button>
 ```
@@ -73,6 +73,9 @@ Replaced the text-based "Quick Checkout with PayPal" button with the official Pa
 - **Disabled State**: 50% opacity + disabled cursor
 - **Accessibility**: Alt text for screen readers
 - **Responsive**: Image scales with container width
+- **Proper Sizing**: Button height matches the "Add to Cart" and "View Cart" buttons (h-11 / 44px)
+- **Centered Image**: PayPal logo is centered within the button container
+- **Aspect Ratio**: Image maintains its aspect ratio using `object-contain`
 
 ## Button Location
 
@@ -136,10 +139,35 @@ These can be kept in case you want to add additional text near the button or use
 - [x] Responsive on mobile devices
 - [x] Accessible alt text present
 
+## Sizing Update (v2)
+
+The PayPal button was updated to match the height of the other buttons:
+
+### Button Height Matching
+- **"Add to Cart" & "View Cart" buttons**: Use `size="lg"` which equals `h-11` (44px)
+- **PayPal button**: Now constrained to `h-11` to match
+- **Image sizing**: `h-full w-auto` ensures the image fills the button height while maintaining aspect ratio
+- **Centering**: `flex items-center justify-center` centers the image within the button
+
+### CSS Classes Applied
+```css
+/* Button container */
+h-11                    /* Height: 44px (matches lg button size) */
+flex items-center       /* Flexbox centering */
+justify-center          /* Horizontal centering */
+
+/* Image */
+h-full                  /* Fill button height */
+w-auto                  /* Width adjusts to maintain aspect ratio */
+max-w-full              /* Don't exceed button width */
+object-contain          /* Maintain aspect ratio, fit within bounds */
+```
+
 ## Notes
 
 - The button now uses a native HTML `<button>` element instead of the custom `Button` component
 - This allows for cleaner image rendering without component styling conflicts
 - The disabled state styling is handled via Tailwind utility classes
-- The image automatically scales to fit the container width while maintaining aspect ratio
+- The image automatically scales to fit the button height while maintaining aspect ratio
+- Button height is fixed at 44px (`h-11`) to match the large button size used by other action buttons
 
