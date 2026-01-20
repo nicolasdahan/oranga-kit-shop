@@ -39,18 +39,18 @@ Replaced the text-based "Quick Checkout with PayPal" button with the official Pa
 </Button>
 ```
 
-**After (v6 - Final - Perfect Match):**
+**After (v7 - Final - Larger Logo):**
 ```tsx
 <Button
   onClick={handlePaypalCheckout}
-  className="w-full bg-[#FFC439] hover:bg-[#F7B600] border-0 p-0 h-11 overflow-hidden"
+  className="w-full bg-[#FFC439] hover:bg-[#F7B600] border-0 px-4 py-2 h-11 overflow-hidden"
   size="lg"
   disabled={!selectedSize}
 >
   <img 
     src="/payment_logo/PayPal-Yellow-Payment-Button.png" 
     alt="PayPal Checkout"
-    className="w-full h-full object-contain"
+    className="h-full w-auto max-w-full object-contain"
   />
 </Button>
 ```
