@@ -9,6 +9,7 @@ import LanguageSelector from "./LanguageSelector";
 import CurrencySelector from "./CurrencySelector";
 import UserMenu from "./UserMenu";
 import SocialButtons from "./SocialButtons";
+import ShirtsMegaMenu from "./ShirtsMegaMenu";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -76,14 +77,7 @@ const Navbar = () => {
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-white group-hover:w-3/4 transition-all duration-300"></div>
           </Link>
 
-          <Link 
-            to="/catalog" 
-            className="relative px-4 py-2 text-sm font-semibold text-white hover:text-white transition-all duration-300 group"
-          >
-            <span className="relative z-10">{t('nav.shirts')}</span>
-            <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-lg transition-all duration-300"></div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-white group-hover:w-3/4 transition-all duration-300"></div>
-          </Link>
+          <ShirtsMegaMenu />
 
           <Link 
             to="/scarves" 

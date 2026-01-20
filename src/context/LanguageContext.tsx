@@ -191,6 +191,19 @@ const translations = {
     'user.menu.login': 'Sign In',
     'user.menu.register': 'Create Account',
 
+    // Mega Menu
+    'megaMenu.shopByClub': 'Shop by Club',
+    'megaMenu.selectLeague': 'Select a league to browse clubs',
+    'megaMenu.allShirts': 'All Shirts',
+    'megaMenu.nationalTeams': 'National Teams',
+    'megaMenu.clubs': 'Clubs',
+    'megaMenu.viewAll': 'View All',
+    'megaMenu.shirts': 'Shirts',
+    'megaMenu.browseAllLeagues': 'Browse All Leagues',
+    'megaMenu.cantFind': 'Can\'t find your club?',
+    'megaMenu.exploreAll': 'Explore all available shirts',
+    'megaMenu.browseAllShirts': 'Browse All Shirts',
+
     // Common
     'common.shopNow': 'Shop Now',
     'common.exploreCollection': 'Explore Collection',
@@ -452,6 +465,19 @@ const translations = {
     'user.menu.login': 'Se connecter',
     'user.menu.register': 'Créer un compte',
 
+    // Mega Menu
+    'megaMenu.shopByClub': 'Acheter par Club',
+    'megaMenu.selectLeague': 'Sélectionnez une ligue pour parcourir les clubs',
+    'megaMenu.allShirts': 'Tous les Maillots',
+    'megaMenu.nationalTeams': 'Équipes Nationales',
+    'megaMenu.clubs': 'Clubs',
+    'megaMenu.viewAll': 'Voir Tous',
+    'megaMenu.shirts': 'Maillots',
+    'megaMenu.browseAllLeagues': 'Parcourir Toutes les Ligues',
+    'megaMenu.cantFind': 'Vous ne trouvez pas votre club?',
+    'megaMenu.exploreAll': 'Explorez tous les maillots disponibles',
+    'megaMenu.browseAllShirts': 'Parcourir Tous les Maillots',
+
     // Common
     'common.shopNow': 'Acheter Maintenant',
     'common.exploreCollection': 'Explorer la Collection',
@@ -712,6 +738,19 @@ const translations = {
     'user.menu.logout': 'Cerrar sesión',
     'user.menu.login': 'Iniciar sesión',
     'user.menu.register': 'Crear cuenta',
+
+    // Mega Menu
+    'megaMenu.shopByClub': 'Comprar por Club',
+    'megaMenu.selectLeague': 'Selecciona una liga para navegar clubes',
+    'megaMenu.allShirts': 'Todas las Camisetas',
+    'megaMenu.nationalTeams': 'Selecciones Nacionales',
+    'megaMenu.clubs': 'Clubes',
+    'megaMenu.viewAll': 'Ver Todas',
+    'megaMenu.shirts': 'Camisetas',
+    'megaMenu.browseAllLeagues': 'Explorar Todas las Ligas',
+    'megaMenu.cantFind': '¿No encuentras tu club?',
+    'megaMenu.exploreAll': 'Explora todas las camisetas disponibles',
+    'megaMenu.browseAllShirts': 'Explorar Todas las Camisetas',
 
     // Common
     'common.shopNow': 'Comprar Ahora',
