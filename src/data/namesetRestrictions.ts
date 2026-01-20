@@ -39,7 +39,7 @@ export const namesetRestrictions: NamesetRestrictionsConfig = {
   // Ligue 1 Standard Nameset (2024/25 season) - Updated font
   'ligue1-standard-2024': {
     allowedClubs: [
-      { clubSlug: 'psg', seasons: ['2024/25'] },
+      { clubSlug: 'psg', seasons: ['2020/21', '2021/22', '2022/23', '2023/24', '2024/25', '2025/26'] },
       { clubSlug: 'marseille', seasons: ['2024/25'] },
       { clubSlug: 'lyon', seasons: ['2024/25'] },
       { clubSlug: 'monaco', seasons: ['2024/25'] },
