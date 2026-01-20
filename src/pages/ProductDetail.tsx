@@ -451,13 +451,13 @@ const ProductDetail = () => {
             </div>
             <button
               onClick={handlePaypalCheckout}
-              className="w-full flex items-center justify-center transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed h-11"
+              className="w-full flex items-center justify-center transition-transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed py-2"
               disabled={!selectedSize}
             >
               <img 
                 src="/payment_logo/PayPal-Yellow-Payment-Button.png" 
                 alt="PayPal Checkout"
-                className="h-full w-auto max-w-full object-contain"
+                className="h-12 w-auto"
               />
             </button>
           </div>
