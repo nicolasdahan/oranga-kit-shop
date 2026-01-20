@@ -449,17 +449,18 @@ const ProductDetail = () => {
                 {t('product.viewCart')}
               </Button>
             </div>
-            <button
+            <Button
               onClick={handlePaypalCheckout}
-              className="w-full flex items-center justify-center transition-transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 bg-[#FFC439] rounded-lg"
+              className="w-full bg-[#FFC439] hover:bg-[#F7B600] border-0 p-0 h-11 overflow-hidden"
+              size="lg"
               disabled={!selectedSize}
             >
               <img 
                 src="/payment_logo/PayPal-Yellow-Payment-Button.png" 
                 alt="PayPal Checkout"
-                className="h-11 w-auto"
+                className="w-full h-full object-contain"
               />
-            </button>
+            </Button>
           </div>
           
           <div className="mt-8 space-y-3">

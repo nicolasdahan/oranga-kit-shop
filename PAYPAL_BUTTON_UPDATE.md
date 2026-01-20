@@ -39,19 +39,20 @@ Replaced the text-based "Quick Checkout with PayPal" button with the official Pa
 </Button>
 ```
 
-**After (v3 - Final):**
+**After (v6 - Final - Perfect Match):**
 ```tsx
-<button
+<Button
   onClick={handlePaypalCheckout}
-  className="w-full flex items-center justify-center transition-transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed py-2"
+  className="w-full bg-[#FFC439] hover:bg-[#F7B600] border-0 p-0 h-11 overflow-hidden"
+  size="lg"
   disabled={!selectedSize}
 >
   <img 
     src="/payment_logo/PayPal-Yellow-Payment-Button.png" 
     alt="PayPal Checkout"
-    className="h-12 w-auto"
+    className="w-full h-full object-contain"
   />
-</button>
+</Button>
 ```
 
 ## Features
@@ -139,29 +140,34 @@ These can be kept in case you want to add additional text near the button or use
 - [x] Responsive on mobile devices
 - [x] Accessible alt text present
 
-## Sizing Update (v3 - Final)
+## Sizing Update (v6 - Final - Perfect Match)
 
-The PayPal button was optimized for better visibility and prominence:
+The PayPal button now uses the exact same `Button` component with identical height:
 
-### Button Sizing - More Prominent
-- **"Add to Cart" & "View Cart" buttons**: Use `size="lg"` which equals `h-11` (44px)
-- **PayPal button**: Now `h-12` (48px) - slightly larger for better visibility
-- **Image sizing**: `h-12 w-auto` ensures proper size while maintaining aspect ratio
-- **Padding**: `py-2` adds vertical padding around the image
-- **Hover effect**: Subtle scale effect (`scale-[1.02]`) instead of opacity change
+### Button Sizing - Exact Match
+- **All buttons**: Use the same `Button` component with `size="lg"`
+- **Identical height**: All buttons are exactly the same height (44px from `h-11`)
+- **Full width**: PayPal button spans the entire width
+- **Perfect image fit**: Image fills the button without distortion using `object-contain`
+- **Zero padding**: `p-0` allows the image to fill the entire button area
+- **Background**: PayPal yellow (`#FFC439`) with hover state (`#F7B600`)
 
 ### CSS Classes Applied
 ```css
-/* Button container */
-py-2                           /* Vertical padding */
-flex items-center              /* Flexbox centering */
-justify-center                 /* Horizontal centering */
-transition-transform           /* Smooth scale transition */
-hover:scale-[1.02]            /* Subtle grow on hover */
+/* Button component */
+size="lg"                      /* Same as other buttons - ensures identical height */
+h-11                           /* Explicit height: 44px (same as lg buttons) */
+w-full                         /* Full width */
+bg-[#FFC439]                   /* PayPal official yellow background */
+hover:bg-[#F7B600]            /* Slightly darker yellow on hover */
+border-0                       /* No border */
+p-0                            /* No padding - image fills entire space */
+overflow-hidden                /* Clean edges */
 
 /* Image */
-h-12                           /* Height: 48px (slightly larger than other buttons) */
-w-auto                         /* Width adjusts to maintain aspect ratio */
+w-full                         /* Fill button width */
+h-full                         /* Fill button height */
+object-contain                 /* Maintain aspect ratio, no distortion */
 ```
 
 ## Notes

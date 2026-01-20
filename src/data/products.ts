@@ -429,7 +429,7 @@ const defaultProducts: Product[] = [
     id: "barcelona-pro-home-2026",
     name: "Barcelona Pro Home Shirt 2025/26",
     description: "Official FC Barcelona professional home shirt for the 2025/26 season. Premium player issue quality with iconic blaugrana stripes.",
-    price: 139.99,
+    price: 159.99,
     images: ["/products/shirts/barcelona-pro-home-2026.jpg"],
     category: "la-liga",
     team: "Barcelona",
