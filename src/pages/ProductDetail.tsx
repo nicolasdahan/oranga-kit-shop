@@ -449,17 +449,17 @@ const ProductDetail = () => {
                 {t('product.viewCart')}
               </Button>
             </div>
-            <Button
+            <button
               onClick={handlePaypalCheckout}
-              className="w-full bg-[#0070BA] hover:bg-[#003087] text-white"
-              size="lg"
+              className="w-full transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={!selectedSize}
             >
-              <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.067 8.478c.492.315.844.825.844 1.522 0 1.845-1.534 3.526-3.33 3.526h-2.262c-.182 0-.343.122-.395.297l-1.457 6.037c-.052.175-.213.297-.395.297H9.611c-.182 0-.343-.122-.395-.297L7.76 13.823c-.052-.175-.213-.297-.395-.297H5.103c-.182 0-.343-.122-.395-.297L3.25 7.192c-.052-.175.057-.297.239-.297h3.895c.182 0 .343.122.395.297l1.457 6.037c.052.175.213.297.395.297h2.262c1.796 0 3.33-1.681 3.33-3.526 0-.697-.352-1.207-.844-1.522-.492-.315-.844-.825-.844-1.522 0-1.845 1.534-3.526 3.33-3.526h2.262c.182 0 .343.122.395.297l1.457 6.037c.052.175.213.297.395.297h2.262c.182 0 .343.122.395.297l1.457 6.037c.052.175-.057.297-.239.297h-3.895c-.182 0-.343-.122-.395-.297l-1.457-6.037c-.052-.175-.213-.297-.395-.297h-2.262c-1.796 0-3.33-1.681-3.33-3.526 0-.697.352-1.207.844-1.522z"/>
-              </svg>
-              {t('product.paypalCheckout')}
-            </Button>
+              <img 
+                src="/payment_logo/PayPal-Yellow-Payment-Button.png" 
+                alt="PayPal Checkout"
+                className="w-full h-auto"
+              />
+            </button>
           </div>
           
           <div className="mt-8 space-y-3">
