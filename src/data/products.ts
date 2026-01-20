@@ -396,7 +396,7 @@ const defaultProducts: Product[] = [
     inStock: true,
     featured: false,
     brand: "Nike",
-    competition: ["League"],
+    competition: ["League", "Champions League"],
     kitType: "Special Edition",
     condition: "New",
     hasNameset: false,
