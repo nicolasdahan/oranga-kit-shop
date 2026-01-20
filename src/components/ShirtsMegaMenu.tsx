@@ -96,11 +96,14 @@ const ShirtsMegaMenu = () => {
 
       {/* Mega Menu Dropdown */}
       <div
-        className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 w-screen max-w-6xl transition-all duration-300 origin-top ${
+        className={`fixed left-1/2 -translate-x-1/2 top-[5rem] w-[95vw] max-w-6xl transition-all duration-300 origin-top ${
           isOpen 
             ? 'opacity-100 scale-100 pointer-events-auto translate-y-0' 
             : 'opacity-0 scale-95 pointer-events-none -translate-y-4'
         }`}
+        style={{
+          maxWidth: 'min(1280px, calc(100vw - 2rem))'
+        }}
       >
         {/* Backdrop with blur */}
         <div className="bg-white/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
@@ -139,7 +142,7 @@ const ShirtsMegaMenu = () => {
           </div>
 
           {/* Main Content Area */}
-          <div className="grid grid-cols-12 min-h-[400px]">
+          <div className="grid grid-cols-12 min-h-[380px] max-h-[70vh]">
             {/* Left Sidebar - Leagues */}
             <div className="col-span-3 bg-gradient-to-br from-gray-50 to-gray-100 border-r border-gray-200 p-4">
               <div className="space-y-1">
@@ -221,7 +224,7 @@ const ShirtsMegaMenu = () => {
             </div>
 
             {/* Right Content - Clubs */}
-            <div className="col-span-9 p-6 overflow-y-auto max-h-[500px]">
+            <div className="col-span-9 p-6 overflow-y-auto max-h-[450px] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
               {activeLeague && (
                 <div className="animate-fade-in">
                   {/* League Header */}
@@ -238,7 +241,7 @@ const ShirtsMegaMenu = () => {
                   </div>
 
                   {/* Clubs Grid */}
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 xl:grid-cols-3 gap-3">
                     {getClubsByLeague(activeLeague).map((club) => (
                       <Link
                         key={club.id}
