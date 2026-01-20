@@ -39,17 +39,17 @@ Replaced the text-based "Quick Checkout with PayPal" button with the official Pa
 </Button>
 ```
 
-**After:**
+**After (v3 - Final):**
 ```tsx
 <button
   onClick={handlePaypalCheckout}
-  className="w-full flex items-center justify-center transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed h-11"
+  className="w-full flex items-center justify-center transition-transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed py-2"
   disabled={!selectedSize}
 >
   <img 
     src="/payment_logo/PayPal-Yellow-Payment-Button.png" 
     alt="PayPal Checkout"
-    className="h-full w-auto max-w-full object-contain"
+    className="h-12 w-auto"
   />
 </button>
 ```
@@ -69,13 +69,13 @@ Replaced the text-based "Quick Checkout with PayPal" button with the official Pa
 - ✅ Responsive image scaling
 
 ### User Experience
-- **Hover Effect**: 90% opacity for visual feedback
+- **Hover Effect**: Subtle scale effect (102%) for premium feel
 - **Disabled State**: 50% opacity + disabled cursor
 - **Accessibility**: Alt text for screen readers
-- **Responsive**: Image scales with container width
-- **Proper Sizing**: Button height matches the "Add to Cart" and "View Cart" buttons (h-11 / 44px)
+- **Prominent Size**: Image height is 48px (`h-12`) for better visibility
 - **Centered Image**: PayPal logo is centered within the button container
-- **Aspect Ratio**: Image maintains its aspect ratio using `object-contain`
+- **Aspect Ratio**: Image maintains its aspect ratio automatically
+- **Clean Design**: Removed opacity changes in favor of subtle scale animation
 
 ## Button Location
 
@@ -139,28 +139,29 @@ These can be kept in case you want to add additional text near the button or use
 - [x] Responsive on mobile devices
 - [x] Accessible alt text present
 
-## Sizing Update (v2)
+## Sizing Update (v3 - Final)
 
-The PayPal button was updated to match the height of the other buttons:
+The PayPal button was optimized for better visibility and prominence:
 
-### Button Height Matching
+### Button Sizing - More Prominent
 - **"Add to Cart" & "View Cart" buttons**: Use `size="lg"` which equals `h-11` (44px)
-- **PayPal button**: Now constrained to `h-11` to match
-- **Image sizing**: `h-full w-auto` ensures the image fills the button height while maintaining aspect ratio
-- **Centering**: `flex items-center justify-center` centers the image within the button
+- **PayPal button**: Now `h-12` (48px) - slightly larger for better visibility
+- **Image sizing**: `h-12 w-auto` ensures proper size while maintaining aspect ratio
+- **Padding**: `py-2` adds vertical padding around the image
+- **Hover effect**: Subtle scale effect (`scale-[1.02]`) instead of opacity change
 
 ### CSS Classes Applied
 ```css
 /* Button container */
-h-11                    /* Height: 44px (matches lg button size) */
-flex items-center       /* Flexbox centering */
-justify-center          /* Horizontal centering */
+py-2                           /* Vertical padding */
+flex items-center              /* Flexbox centering */
+justify-center                 /* Horizontal centering */
+transition-transform           /* Smooth scale transition */
+hover:scale-[1.02]            /* Subtle grow on hover */
 
 /* Image */
-h-full                  /* Fill button height */
-w-auto                  /* Width adjusts to maintain aspect ratio */
-max-w-full              /* Don't exceed button width */
-object-contain          /* Maintain aspect ratio, fit within bounds */
+h-12                           /* Height: 48px (slightly larger than other buttons) */
+w-auto                         /* Width adjusts to maintain aspect ratio */
 ```
 
 ## Notes
