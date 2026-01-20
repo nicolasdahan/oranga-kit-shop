@@ -56,23 +56,22 @@ const Balls = () => {
               {t('nav.equipment') || 'Equipment'}
             </Badge>
             <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-              <span className="block">Official Match</span>
+              <span className="block">{t('balls.title')}</span>
               <span className="block bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">
-                Balls Collection
+                {t('balls.ballsCollection')}
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8">
-              Own a piece of football history with our collection of official match balls 
-              from the world's greatest tournaments and competitions.
+              {t('balls.description')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center text-sm">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                 <Award className="w-4 h-4" />
-                <span>{sortedBalls.length} Products</span>
+                <span>{sortedBalls.length} {t('common.products')}</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                 <Sparkles className="w-4 h-4" />
-                <span>Collector's Items</span>
+                <span>{t('balls.collectorsItems')}</span>
               </div>
             </div>
           </div>
@@ -86,36 +85,36 @@ const Balls = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
             <div>
               <h2 className="text-2xl font-bold">
-                All Match Balls
+                {t('balls.allMatchBalls')}
               </h2>
               <p className="text-muted-foreground mt-1">
-                {sortedBalls.length} {sortedBalls.length === 1 ? 'ball' : 'balls'} available
+                {sortedBalls.length} {sortedBalls.length === 1 ? t('balls.ball') : t('balls.balls')} {t('common.available')}
               </p>
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Sort by:</span>
+              <span className="text-sm text-muted-foreground">{t('common.sortBy')}</span>
               <div className="flex gap-2">
                 <Button
                   variant={sortBy === "newest" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSortBy("newest")}
                 >
-                  Newest
+                  {t('common.newest')}
                 </Button>
                 <Button
                   variant={sortBy === "price-asc" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSortBy("price-asc")}
                 >
-                  Price: Low to High
+                  {t('common.priceLowToHigh')}
                 </Button>
                 <Button
                   variant={sortBy === "price-desc" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSortBy("price-desc")}
                 >
-                  Price: High to Low
+                  {t('common.priceHighToLow')}
                 </Button>
               </div>
             </div>
@@ -142,7 +141,7 @@ const Balls = () => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">No balls found.</p>
+              <p className="text-lg text-muted-foreground">{t('balls.noBalls')}</p>
             </div>
           )}
         </div>
@@ -161,18 +160,13 @@ const Balls = () => {
           <div className="max-w-3xl mx-auto text-center">
             <Award className="w-16 h-16 mx-auto mb-6 text-primary animate-bounce-slow" />
             <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-orange-600 via-red-600 to-yellow-600 bg-clip-text text-transparent">
-              Collect Football History
+              {t('balls.collectHistory')}
             </h2>
             <p className="text-lg text-gray-700 mb-6">
-              Every great moment in football starts with the ball. Our collection features 
-              official match balls from legendary tournaments - from World Cups and European 
-              Championships to Champions League finals and beyond.
+              {t('balls.everyMoment')} {t('balls.legendaryTournaments')}
             </p>
             <p className="text-gray-600">
-              These aren't just balls - they're replicas of the exact designs used in 
-              historic matches. Perfect for collectors, display pieces, or even for playing 
-              with the same quality the professionals use. Each ball comes with authentic 
-              tournament branding and premium construction.
+              {t('balls.notJustBalls')} {t('balls.perfectFor')} {t('balls.authenticBranding')}
             </p>
           </div>
         </div>

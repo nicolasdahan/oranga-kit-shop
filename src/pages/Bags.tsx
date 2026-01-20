@@ -53,26 +53,25 @@ const Bags = () => {
           <div className="max-w-3xl mx-auto text-center">
             <Badge className="mb-6 bg-white/20 hover:bg-white/30 text-white border-0 text-base px-6 py-2">
               <ShoppingBag className="w-4 h-4 mr-2" />
-              Accessories
+              {t('common.accessories')}
             </Badge>
             <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-              <span className="block">Football Bags &</span>
+              <span className="block">{t('bags.title')}</span>
               <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Accessories
+                {t('bags.accessories')}
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8">
-              Premium bags, waistpacks, and crossbody bags from top brands. 
-              Carry your gear in style.
+              {t('bags.description')}
             </p>
             <div className="flex flex-wrap gap-4 justify-center text-sm">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                 <ShoppingBag className="w-4 h-4" />
-                <span>{sortedBags.length} Products</span>
+                <span>{sortedBags.length} {t('common.products')}</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                 <Sparkles className="w-4 h-4" />
-                <span>Premium Brands</span>
+                <span>{t('bags.premiumBrandsShort')}</span>
               </div>
             </div>
           </div>
@@ -86,36 +85,36 @@ const Bags = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
             <div>
               <h2 className="text-3xl font-bold">
-                All Bags & Accessories
+                {t('bags.allBags')}
               </h2>
               <p className="text-muted-foreground mt-1">
-                {sortedBags.length} {sortedBags.length === 1 ? 'product' : 'products'} available
+                {sortedBags.length} {sortedBags.length === 1 ? t('common.product') : t('common.products')} {t('common.available')}
               </p>
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Sort by:</span>
+              <span className="text-sm text-muted-foreground">{t('common.sortBy')}</span>
               <div className="flex gap-2">
                 <Button
                   variant={sortBy === "newest" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSortBy("newest")}
                 >
-                  Newest
+                  {t('common.newest')}
                 </Button>
                 <Button
                   variant={sortBy === "price-asc" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSortBy("price-asc")}
                 >
-                  Price: Low to High
+                  {t('common.priceLowToHigh')}
                 </Button>
                 <Button
                   variant={sortBy === "price-desc" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSortBy("price-desc")}
                 >
-                  Price: High to Low
+                  {t('common.priceHighToLow')}
                 </Button>
               </div>
             </div>
@@ -142,7 +141,7 @@ const Bags = () => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">No bags found.</p>
+              <p className="text-lg text-muted-foreground">{t('bags.noBags')}</p>
             </div>
           )}
         </div>
@@ -161,16 +160,13 @@ const Bags = () => {
           <div className="max-w-3xl mx-auto text-center">
             <ShoppingBag className="w-16 h-16 mx-auto mb-6 text-primary animate-bounce-slow" />
             <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Gear Up in Style
+              {t('bags.gearUpStyle')}
             </h2>
             <p className="text-lg text-gray-700 mb-6">
-              Our collection features premium bags and accessories from Nike, Adidas, The North Face, 
-              and Under Armour. Whether you need a compact waistpack for match day, a crossbody bag 
-              for daily essentials, or a spacious tote for training gear, we've got you covered.
+              {t('bags.premiumBrands')} {t('bags.needCompact')}
             </p>
             <p className="text-gray-600">
-              Each bag combines functionality with style, featuring durable materials, smart organization, 
-              and iconic brand designs. Perfect for athletes, fans, and anyone who values quality accessories.
+              {t('bags.functionality')} {t('bags.perfectFor')}
             </p>
           </div>
         </div>

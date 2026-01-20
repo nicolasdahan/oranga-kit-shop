@@ -161,19 +161,18 @@ const NewArrivals = () => {
             
             {/* Main title with gradient text */}
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
-              <span className="inline-block animate-fade-in-up">Fresh</span>{' '}
+              <span className="inline-block animate-fade-in-up">{t('newArrivals.title').split(' ')[0]}</span>{' '}
               <span className="inline-block animate-fade-in-up animation-delay-100 bg-gradient-to-r from-yellow-200 via-pink-200 to-purple-200 bg-clip-text text-transparent">
-                Arrivals
+                {t('newArrivals.title').split(' ')[1]}
               </span>
               <span className="block text-3xl md:text-4xl lg:text-5xl mt-4 text-white/90 font-bold animate-fade-in-up animation-delay-200">
-                Latest Football Shirts & Gear
+                {t('newArrivals.subtitle')}
               </span>
             </h1>
             
             {/* Subtitle */}
             <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-300">
-              Discover the <span className="font-bold text-yellow-300">newest additions</span> to our collection. 
-              From the latest season jerseys to <span className="font-bold text-pink-300">exclusive retro designs</span>.
+              {t('newArrivals.description')}
             </p>
 
             {/* Stats with icons - More dynamic */}
@@ -183,28 +182,28 @@ const NewArrivals = () => {
                   <Clock className="w-5 h-5 group-hover:animate-spin" />
                   <div className="absolute inset-0 bg-white/30 rounded-full blur-md group-hover:bg-white/50 transition-all"></div>
                 </div>
-                <span className="font-semibold">{sortedProducts.length} New Products</span>
+                <span className="font-semibold">{sortedProducts.length} {t('common.new')} {t('common.products')}</span>
               </div>
               <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-3 rounded-full border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 cursor-default shadow-lg">
                 <div className="relative">
                   <TrendingUp className="w-5 h-5 group-hover:animate-bounce" />
                   <div className="absolute inset-0 bg-white/30 rounded-full blur-md group-hover:bg-white/50 transition-all"></div>
                 </div>
-                <span className="font-semibold">Updated Daily</span>
+                <span className="font-semibold">{t('common.updatedDaily')}</span>
               </div>
               <div className="group flex items-center gap-2 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-md px-5 py-3 rounded-full border border-yellow-400/30 hover:from-yellow-500/30 hover:to-orange-500/30 hover:scale-105 transition-all duration-300 cursor-default shadow-lg">
                 <div className="relative">
                   <Award className="w-5 h-5 text-yellow-300 group-hover:rotate-12 transition-transform" />
                   <div className="absolute inset-0 bg-yellow-300/30 rounded-full blur-md group-hover:bg-yellow-300/50 transition-all"></div>
                 </div>
-                <span className="font-semibold text-yellow-100">Premium Quality</span>
+                <span className="font-semibold text-yellow-100">{t('common.premiumQuality')}</span>
               </div>
             </div>
 
             {/* Scroll indicator */}
             <div className="animate-bounce-slow mt-12">
               <div className="inline-flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors cursor-pointer">
-                <span className="text-sm font-medium">Scroll to explore</span>
+                <span className="text-sm font-medium">{t('common.scrollToExplore')}</span>
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
@@ -234,29 +233,29 @@ const NewArrivals = () => {
                   <SheetTrigger asChild>
                     <Button variant="outline" className="lg:hidden w-full sm:w-auto">
                       <SlidersHorizontal className="w-4 h-4 mr-2" />
-                      Filters
+                      {t('common.filters')}
                       {hasActiveFilters && (
-                        <Badge className="ml-2 bg-primary text-white">Active</Badge>
+                        <Badge className="ml-2 bg-primary text-white">{t('common.active')}</Badge>
                       )}
                     </Button>
                   </SheetTrigger>
                   <SheetContent>
                     <SheetHeader>
-                      <SheetTitle>Filters</SheetTitle>
+                      <SheetTitle>{t('common.filters')}</SheetTitle>
                       <SheetDescription>
-                        Refine your search for new arrivals
+                        {t('common.refineSearch')}
                       </SheetDescription>
                     </SheetHeader>
                     <div className="mt-6 space-y-6">
                       {/* Category Filter */}
                       <div>
-                        <label className="text-sm font-medium mb-2 block">Category</label>
+                        <label className="text-sm font-medium mb-2 block">{t('common.category')}</label>
                         <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                           <SelectTrigger>
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="all">All Categories</SelectItem>
+                            <SelectItem value="all">{t('common.allCategories')}</SelectItem>
                             {categories.map(cat => (
                               <SelectItem key={cat} value={cat}>
                                 {cat.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
@@ -268,13 +267,13 @@ const NewArrivals = () => {
 
                       {/* Brand Filter */}
                       <div>
-                        <label className="text-sm font-medium mb-2 block">Brand</label>
+                        <label className="text-sm font-medium mb-2 block">{t('common.brand')}</label>
                         <Select value={brandFilter} onValueChange={setBrandFilter}>
                           <SelectTrigger>
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="all">All Brands</SelectItem>
+                            <SelectItem value="all">{t('common.allBrands')}</SelectItem>
                             {brands.map(brand => (
                               <SelectItem key={brand} value={brand}>{brand}</SelectItem>
                             ))}
@@ -290,7 +289,7 @@ const NewArrivals = () => {
                           onClick={clearFilters}
                           className="w-full"
                         >
-                          Clear All Filters
+                          {t('common.clearAllFilters')}
                         </Button>
                       )}
                     </div>
@@ -301,10 +300,10 @@ const NewArrivals = () => {
                 <div className="hidden lg:flex gap-4 items-center">
                   <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                     <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Category" />
+                      <SelectValue placeholder={t('common.category')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">All Categories</SelectItem>
+                      <SelectItem value="all">{t('common.allCategories')}</SelectItem>
                       {categories.map(cat => (
                         <SelectItem key={cat} value={cat}>
                           {cat.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
@@ -315,10 +314,10 @@ const NewArrivals = () => {
 
                   <Select value={brandFilter} onValueChange={setBrandFilter}>
                     <SelectTrigger className="w-[140px]">
-                      <SelectValue placeholder="Brand" />
+                      <SelectValue placeholder={t('common.brand')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">All Brands</SelectItem>
+                      <SelectItem value="all">{t('common.allBrands')}</SelectItem>
                       {brands.map(brand => (
                         <SelectItem key={brand} value={brand}>{brand}</SelectItem>
                       ))}
@@ -332,7 +331,7 @@ const NewArrivals = () => {
                       onClick={clearFilters}
                       className="text-muted-foreground hover:text-foreground"
                     >
-                      Clear filters
+                      {t('common.clearFilters')}
                     </Button>
                   )}
                 </div>
@@ -341,17 +340,17 @@ const NewArrivals = () => {
               {/* Right side - Sort and Count */}
               <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center w-full lg:w-auto">
                 <div className="text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">{sortedProducts.length}</span> {sortedProducts.length === 1 ? 'product' : 'products'}
+                  <span className="font-semibold text-foreground">{sortedProducts.length}</span> {sortedProducts.length === 1 ? t('common.product') : t('common.products')}
                 </div>
 
                 <Select value={sortBy} onValueChange={(value: any) => setSortBy(value)}>
                   <SelectTrigger className="w-full sm:w-[200px]">
-                    <SelectValue placeholder="Sort by" />
+                    <SelectValue placeholder={t('common.sortBy')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="newest">Newest First</SelectItem>
-                    <SelectItem value="price-asc">Price: Low to High</SelectItem>
-                    <SelectItem value="price-desc">Price: High to Low</SelectItem>
+                    <SelectItem value="newest">{t('common.newestFirst')}</SelectItem>
+                    <SelectItem value="price-asc">{t('common.priceLowToHigh')}</SelectItem>
+                    <SelectItem value="price-desc">{t('common.priceHighToLow')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -437,32 +436,29 @@ const NewArrivals = () => {
                 </div>
                 
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  Always First to Know
+                  {t('newArrivals.firstToKnow')}
                 </h2>
                 
                 <p className="text-xl text-gray-700 leading-relaxed max-w-2xl">
-                  We update our collection <span className="font-bold text-purple-600">daily</span> with the latest releases from top brands. 
-                  From current season kits to <span className="font-bold text-blue-600">exclusive retro editions</span>, you'll find the newest 
-                  football shirts and gear right here. Don't miss out on <span className="font-bold text-pink-600">limited editions</span> and 
-                  special releases!
+                  {t('newArrivals.dailyUpdates')} {t('newArrivals.latestKits')} {t('newArrivals.limitedEditions')}
                 </p>
 
                 {/* Feature highlights */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 w-full">
                   <div className="group p-6 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 hover:from-blue-200 hover:to-blue-100 transition-all duration-300 hover:scale-105 cursor-default">
                     <Zap className="w-8 h-8 text-blue-600 mb-3 mx-auto group-hover:animate-bounce" />
-                    <h3 className="font-bold text-lg mb-2 text-blue-900">Lightning Fast</h3>
-                    <p className="text-sm text-blue-700">New products added within hours of release</p>
+                    <h3 className="font-bold text-lg mb-2 text-blue-900">{t('newArrivals.lightningFast')}</h3>
+                    <p className="text-sm text-blue-700">{t('newArrivals.addedHours')}</p>
                   </div>
                   <div className="group p-6 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 hover:from-purple-200 hover:to-purple-100 transition-all duration-300 hover:scale-105 cursor-default">
                     <Award className="w-8 h-8 text-purple-600 mb-3 mx-auto group-hover:rotate-12 transition-transform" />
-                    <h3 className="font-bold text-lg mb-2 text-purple-900">Premium Quality</h3>
-                    <p className="text-sm text-purple-700">Only authentic, official merchandise</p>
+                    <h3 className="font-bold text-lg mb-2 text-purple-900">{t('newArrivals.premiumQuality')}</h3>
+                    <p className="text-sm text-purple-700">{t('newArrivals.onlyAuthentic')}</p>
                   </div>
                   <div className="group p-6 rounded-2xl bg-gradient-to-br from-pink-100 to-pink-50 hover:from-pink-200 hover:to-pink-100 transition-all duration-300 hover:scale-105 cursor-default">
                     <Star className="w-8 h-8 text-pink-600 mb-3 mx-auto group-hover:animate-spin-slow" />
-                    <h3 className="font-bold text-lg mb-2 text-pink-900">Exclusive Access</h3>
-                    <p className="text-sm text-pink-700">Limited editions you won't find elsewhere</p>
+                    <h3 className="font-bold text-lg mb-2 text-pink-900">{t('newArrivals.exclusiveAccess')}</h3>
+                    <p className="text-sm text-pink-700">{t('newArrivals.limitedEditionsExclusive')}</p>
                   </div>
                 </div>
               </div>

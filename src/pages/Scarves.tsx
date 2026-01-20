@@ -41,11 +41,10 @@ const Scarves = () => {
               {t('nav.accessories') || 'Accessories'}
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Football Scarves Collection
+              {t('scarves.title')}
             </h1>
             <p className="text-xl text-white/90">
-              Show your colors with our collection of official club and match scarves. 
-              From classic designs to limited edition commemorative pieces.
+              {t('scarves.description')}
             </p>
           </div>
         </div>
@@ -58,36 +57,36 @@ const Scarves = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
             <div>
               <h2 className="text-2xl font-bold">
-                All Scarves
+                {t('scarves.allScarves')}
               </h2>
               <p className="text-muted-foreground mt-1">
-                {sortedScarves.length} {sortedScarves.length === 1 ? 'scarf' : 'scarves'} available
+                {sortedScarves.length} {sortedScarves.length === 1 ? t('scarves.scarf') : t('scarves.scarves')} {t('common.available')}
               </p>
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Sort by:</span>
+              <span className="text-sm text-muted-foreground">{t('common.sortBy')}</span>
               <div className="flex gap-2">
                 <Button
                   variant={sortBy === "newest" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSortBy("newest")}
                 >
-                  Newest
+                  {t('common.newest')}
                 </Button>
                 <Button
                   variant={sortBy === "price-asc" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSortBy("price-asc")}
                 >
-                  Price: Low to High
+                  {t('common.priceLowToHigh')}
                 </Button>
                 <Button
                   variant={sortBy === "price-desc" ? "default" : "outline"}
                   size="sm"
                   onClick={() => setSortBy("price-desc")}
                 >
-                  Price: High to Low
+                  {t('common.priceHighToLow')}
                 </Button>
               </div>
             </div>
@@ -102,7 +101,7 @@ const Scarves = () => {
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">No scarves found.</p>
+              <p className="text-lg text-muted-foreground">{t('scarves.noScarves')}</p>
             </div>
           )}
         </div>
@@ -113,17 +112,13 @@ const Scarves = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">
-              Why Collect Football Scarves?
+              {t('scarves.whyCollect')}
             </h2>
             <p className="text-lg text-muted-foreground mb-4">
-              Football scarves are more than just accessories - they're symbols of loyalty, 
-              passion, and unforgettable moments. Whether you're at the stadium, watching from home, 
-              or simply showing your support, a scarf connects you to your club and fellow fans.
+              {t('scarves.symbolsLoyalty')} {t('scarves.connectsFans')}
             </p>
             <p className="text-muted-foreground">
-              Our collection includes official club scarves, limited edition match scarves, 
-              and commemorative designs from historic fixtures. Each piece is crafted with 
-              premium materials and authentic club details.
+              {t('scarves.collectionIncludes')} {t('scarves.premiumMaterials')}
             </p>
           </div>
         </div>

@@ -111,22 +111,22 @@ const Home = () => {
             <div className="inline-block mb-6 animate-bounce-slow">
               <Badge className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white border-0 text-sm md:text-base px-4 md:px-6 py-2 shadow-2xl shadow-orange-500/50">
                 <Sparkles className="w-4 h-4 mr-2 animate-pulse" />
-                Premium Football Gear
+                {t('home.premiumFootballGear')}
               </Badge>
             </div>
 
             {/* Main headline with gradient */}
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight animate-fade-in-up">
-              <span className="block text-white drop-shadow-2xl">Wear Your</span>
+              <span className="block text-white drop-shadow-2xl">{t('home.wearYour')}</span>
               <span className="block bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent drop-shadow-2xl animate-fade-in-up animation-delay-100">
-                Passion
+                {t('home.passion')}
               </span>
             </h1>
             
             {/* Subtitle */}
             <p className="text-xl md:text-2xl lg:text-3xl text-white/90 mb-10 max-w-2xl leading-relaxed animate-fade-in-up animation-delay-200 drop-shadow-lg">
-              Authentic football shirts from the world's greatest clubs and nations. 
-              <span className="block mt-2 text-orange-300 font-semibold">Premium quality. Worldwide shipping.</span>
+              {t('home.authenticShirts')}
+              <span className="block mt-2 text-orange-300 font-semibold">{t('home.premiumQualityWorldwide')}</span>
             </p>
 
             {/* CTA Buttons */}
@@ -149,7 +149,7 @@ const Home = () => {
               >
                 <Link to="/new-arrivals">
                   <Zap className="w-5 h-5 mr-2 group-hover:animate-spin-slow" />
-                  New Arrivals
+                  {t('home.newArrivalsBtn')}
                 </Link>
               </Button>
             </div>
@@ -158,15 +158,15 @@ const Home = () => {
             <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-400">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm border border-white/20">
                 <Shield className="w-4 h-4 text-green-400" />
-                <span>100% Authentic</span>
+                <span>{t('home.hundredPercent')}</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm border border-white/20">
                 <TrendingUp className="w-4 h-4 text-blue-400" />
-                <span>1000+ Products</span>
+                <span>{t('home.thousandProducts')}</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm border border-white/20">
                 <Award className="w-4 h-4 text-yellow-400" />
-                <span>Top Brands</span>
+                <span>{t('home.topBrands')}</span>
               </div>
             </div>
           </div>
@@ -175,7 +175,7 @@ const Home = () => {
         {/* Scroll indicator */}
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 animate-bounce-slow">
           <div className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors cursor-pointer">
-            <span className="text-sm font-medium hidden md:block">Explore Collection</span>
+            <span className="text-sm font-medium hidden md:block">{t('home.exploreCollection')}</span>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
@@ -206,7 +206,7 @@ const Home = () => {
               <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 {t('home.newArrivals')}
               </h2>
-              <p className="text-lg text-gray-600 mt-2">Fresh drops from the world's top brands</p>
+              <p className="text-lg text-gray-600 mt-2">{t('home.freshDrops')}</p>
             </div>
             <Button 
               asChild 
@@ -261,9 +261,9 @@ const Home = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
-              More Than Just <span className="bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent">Shirts</span>
+              {t('home.moreThanShirts')}
             </h2>
-            <p className="text-xl text-gray-300">Complete your football collection</p>
+            <p className="text-xl text-gray-300">{t('home.completeCollection')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -287,10 +287,10 @@ const Home = () => {
                   <div className="bg-white/10 backdrop-blur-md rounded-full p-4 mb-4 group-hover:scale-110 transition-transform">
                     <Sparkles className="w-12 h-12 text-blue-300" />
                   </div>
-                  <h3 className="text-4xl font-black mb-3 drop-shadow-2xl">Scarves</h3>
-                  <p className="text-lg text-center mb-6 text-blue-100">Official club & match scarves</p>
+                  <h3 className="text-4xl font-black mb-3 drop-shadow-2xl">{t('nav.scarves')}</h3>
+                  <p className="text-lg text-center mb-6 text-blue-100">{t('home.officialClubScarves')}</p>
                   <Button className="bg-white text-blue-600 hover:bg-blue-50 shadow-xl group-hover:shadow-2xl group-hover:scale-110 transition-all">
-                    Explore Collection
+                    {t('home.exploreCollection')}
                     <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
@@ -324,10 +324,10 @@ const Home = () => {
                   <div className="bg-white/10 backdrop-blur-md rounded-full p-4 mb-4 group-hover:scale-110 transition-transform group-hover:rotate-12">
                     <Award className="w-12 h-12 text-orange-300" />
                   </div>
-                  <h3 className="text-4xl font-black mb-3 drop-shadow-2xl">Match Balls</h3>
-                  <p className="text-lg text-center mb-6 text-orange-100">Official tournament balls</p>
+                  <h3 className="text-4xl font-black mb-3 drop-shadow-2xl">{t('nav.balls')}</h3>
+                  <p className="text-lg text-center mb-6 text-orange-100">{t('home.officialTournamentBalls')}</p>
                   <Button className="bg-white text-red-600 hover:bg-red-50 shadow-xl group-hover:shadow-2xl group-hover:scale-110 transition-all">
-                    Explore Collection
+                    {t('home.exploreCollection')}
                     <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
@@ -423,18 +423,16 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Wear Your Passion. Live Your Game.
+              {t('home.wearPassionDescription')}
             </h2>
             <p className="text-xl font-semibold text-primary mb-6">
-              "More Than Just a Shirt - It's Your Identity"
+              {t('home.moreThanShirtQuote')}
             </p>
             <p className="text-lg text-muted-foreground mb-4">
-              A football shirt isn't just fabric and colors. It's the roar of the stadium, the joy of victory, the pride of your club. 
-              Whether you're at the match, on the street, or with friends, wearing your team's colors connects you to millions of fans worldwide.
+              {t('home.passionDescription')} {t('home.passionExtended')}
             </p>
             <p className="text-muted-foreground">
-              From vintage classics that tell legendary stories to modern masterpieces worn by today's heroes, each shirt carries the spirit of the beautiful game. 
-              Express your loyalty, celebrate your heritage, and show the world which side you're on. Because football is more than a sport – it's a way of life.
+              {t('home.vintageClassics')}
             </p>
           </div>
         </div>
@@ -451,13 +449,13 @@ const Home = () => {
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white border-0">
               <Award className="w-3 h-3 mr-1" />
-              Premium Selection
+              {t('common.premiumSelection')}
             </Badge>
             <h2 className="text-4xl md:text-5xl font-black mb-4">
               {t('home.featuredJerseys')}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Hand-picked selections from the world's most iconic clubs
+              {t('home.handPicked')}
             </p>
           </div>
 
